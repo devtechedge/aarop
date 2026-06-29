@@ -5,6 +5,7 @@ import {
   runAgenticLoop, realComplete, PHASE_META, AGENT_META,
   type LoopSnapshot, type Phase, type AgentRole, type Budget,
 } from "@/lib/aarop";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const LOOP_PHASES: Phase[] = ["perceive", "plan", "act", "observe", "reflect", "adapt"];
 const AGENTS: AgentRole[] = ["orchestrator", "researcher", "coder", "analyst", "verifier", "memory"];
@@ -60,7 +61,32 @@ export default function Page() {
   };
 
   return (
-    <div className="wrap">
+    <>
+    <nav className="nav">
+      <div className="nav-inner">
+        <a className="brand" href="#top">
+          <svg className="logo" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+            <defs>
+              <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stopColor="var(--primary)" />
+                <stop offset="1" stopColor="var(--accent)" />
+              </linearGradient>
+            </defs>
+            <circle cx="32" cy="32" r="20" fill="none" stroke="url(#lg)" strokeWidth="5" />
+            <path d="M44 24 L53 17" stroke="url(#lg)" strokeWidth="5" strokeLinecap="round" />
+            <circle cx="32" cy="32" r="6" fill="url(#lg)" />
+          </svg>
+          AAROP
+        </a>
+        <div className="nav-actions">
+          <a className="nav-link" href="https://github.com/devtechedge/aarop" target="_blank" rel="noreferrer">GitHub</a>
+          <ThemeToggle />
+          <button className="cta-sm" onClick={() => run(objective)}>Run the demo ▶</button>
+        </div>
+      </div>
+    </nav>
+
+    <div className="wrap" id="top">
       <header className="hero">
         <span className="kicker">Live Demo · Agentic Loop Engineering</span>
         <h1 className="title">AAROP</h1>
@@ -72,6 +98,10 @@ export default function Page() {
         <p className="byline">
           Built by <b>Devayan Mandal</b> · <a href="https://github.com/devtechedge/aarop" target="_blank" rel="noreferrer">github.com/devtechedge/aarop</a>
         </p>
+        <div className="hero-ctas">
+          <button className="btn" onClick={() => run(objective)} disabled={running}>{running ? "Running…" : "Run the demo ▶"}</button>
+          <a className="btn ghost" href="https://github.com/devtechedge/aarop" target="_blank" rel="noreferrer">View source →</a>
+        </div>
       </header>
 
       {/* ===== SECTION 1: LIVE LOOP ===== */}
@@ -228,5 +258,6 @@ export default function Page() {
         </p>
       </footer>
     </div>
+    </>
   );
 }

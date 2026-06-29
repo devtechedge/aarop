@@ -33,6 +33,10 @@ npm run dev      # http://localhost:3000
 
 Because the demo is fully static/client-side, it deploys on Vercel's free Hobby tier with **no serverless timeout risk and no API costs**.
 
+## 🎨 Design
+
+A sky→dusk design language with **light / dark themes** (system-aware, with a manual toggle persisted to `localStorage` and no flash on load), Inter typography, and a sticky top nav.
+
 ## 🧱 Tech
 
 Next.js 14 (App Router) · React 18 · TypeScript · zero runtime dependencies beyond React/Next.

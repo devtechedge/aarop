@@ -3,6 +3,14 @@
 All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.3.0] — 2026-06-29
+
+### Changed
+- **Full UI redesign** with a sky→dusk design language: refined color tokens, Inter typography with a modular type scale, sticky top nav, restyled hero with dual CTAs, and softer rounded cards.
+
+### Added
+- **Light / dark theme toggle** — system-aware default (respects `prefers-color-scheme`), manual override persisted to `localStorage`, with a no-flash-on-load script.
+
 ## [0.2.0] — 2026-06-29
 
 ### Added
