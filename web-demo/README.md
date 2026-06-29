@@ -7,9 +7,13 @@ An interactive, browser-based walk-through of the **AAROP** autonomous multi-age
 ## ✨ What this demonstrates
 
 - The complete **agentic loop as an explicit state machine** (not a hidden prompt chain)
-- Live **execution trace** with phase transitions, tool calls, and verification events
-- **Bounded autonomy** — step / cost / confidence metrics shown in real time
-- A **Verifier/Critic gate** that accepts or escalates before committing a result
+- **Multi-agent orchestration** — the Orchestrator delegates to Researcher / Coder / Analyst / Verifier / Memory agents, which light up live
+- **Multi-step plans** — research-style objectives chain several tools and agents, then synthesize
+- **Resilient recovery** — a failure scenario triggers retries → circuit breaker → escalation
+- **Bounded autonomy** — a budget scenario shows the loop escalate instead of looping forever
+- Live, **exportable execution trace** (download the run as JSON)
+- An **interactive architecture diagram** mapping each demo component to its production backend
+- An optional **"bring your own OpenAI key"** toggle for real LLM narration (key stays in your browser)
 
 The loop logic in [`lib/aarop.ts`](lib/aarop.ts) is a faithful TypeScript port of the Python reference core. It runs **100% client-side** with a deterministic mock model provider — so the demo is instant, free, and never times out.
 

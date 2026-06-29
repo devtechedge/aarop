@@ -3,6 +3,18 @@
 All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.2.0] — 2026-06-29
+
+### Added
+- **Multi-agent orchestration view** — Orchestrator delegates to Researcher / Coder / Analyst / Verifier / Memory worker agents, visualized live.
+- **Multi-step plans** — research/design objectives chain multiple tools across agents and synthesize a result.
+- **Resilience scenario** — failure injection demonstrates retries, circuit breaker, and escalation.
+- **Budget-exhaustion scenario** — demonstrates bounded autonomy escalating to a human.
+- **Interactive system-architecture diagram** + an engineering-rigor section in the live demo.
+- **Trace export** — download any run's structured trace as JSON.
+- **Optional real-LLM toggle** — bring-your-own-OpenAI-key narration (key never leaves the browser).
+- **CI moved to repo root** and split into Python-core and Next.js-build jobs.
+
 ## [0.1.0] — 2026-06-29
 
 ### Added
