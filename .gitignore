@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+# Node / Next
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+# OS
+.DS_Store

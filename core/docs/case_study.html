@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AAROP — Case Study · Devayan Mandal</title>
+<style>
+  @page {
+    size: A4;
+    margin: 18mm 16mm 20mm 16mm;
+    @bottom-center {
+      content: "AAROP — Autonomous Agentic Reasoning & Orchestration Platform  ·  Devayan Mandal";
+      font-size: 8pt; color: #8a93a6;
+    }
+    @bottom-right { content: "Page " counter(page) " / " counter(pages); font-size: 8pt; color: #8a93a6; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #1c2230; line-height: 1.5; font-size: 10.5pt; margin: 0;
+  }
+  h1, h2, h3 { color: #0f1733; line-height: 1.2; }
+  h2 { font-size: 15pt; border-bottom: 2px solid #4f46e5; padding-bottom: 4px; margin-top: 26px; }
+  h3 { font-size: 11.5pt; color: #4f46e5; margin-bottom: 4px; }
+  a { color: #4f46e5; text-decoration: none; }
+  code { background: #f1f2f8; padding: 1px 5px; border-radius: 4px; font-size: 9pt; color: #b3146b; }
+  .mono { font-family: "SF Mono", Consolas, monospace; }
+
+  /* Cover */
+  .cover {
+    background: linear-gradient(135deg, #0f1733 0%, #312e81 55%, #4f46e5 100%);
+    color: #fff; padding: 40px 34px; border-radius: 14px; margin-bottom: 8px;
+  }
+  .cover .kicker { letter-spacing: 3px; font-size: 9pt; text-transform: uppercase; color: #c7d2fe; }
+  .cover h1 { color: #fff; font-size: 27pt; margin: 10px 0 6px; }
+  .cover .sub { font-size: 12pt; color: #e0e7ff; max-width: 90%; }
+  .cover .meta { margin-top: 22px; font-size: 9.5pt; color: #c7d2fe; }
+  .cover .meta b { color: #fff; }
+
+  .badges { margin: 14px 0; }
+  .badge {
+    display: inline-block; background: #eef2ff; color: #3730a3; border: 1px solid #c7d2fe;
+    border-radius: 20px; padding: 3px 11px; font-size: 8.5pt; font-weight: 600; margin: 2px 4px 2px 0;
+  }
+  .badge.green { background: #ecfdf5; color: #047857; border-color: #a7f3d0; }
+
+  .grid { display: flex; gap: 12px; margin: 12px 0; }
+  .card {
+    flex: 1; background: #f8f9fc; border: 1px solid #e6e8f0; border-radius: 10px; padding: 12px 14px;
+  }
+  .card .num { font-size: 20pt; font-weight: 800; color: #4f46e5; }
+  .card .lbl { font-size: 8.5pt; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 9.3pt; margin: 10px 0; }
+  th { background: #0f1733; color: #fff; text-align: left; padding: 7px 9px; }
+  td { padding: 6px 9px; border-bottom: 1px solid #e6e8f0; vertical-align: top; }
+  tr:nth-child(even) td { background: #f8f9fc; }
+
+  .pill { display:inline-block; background:#eef2ff; color:#3730a3; border-radius:5px; padding:1px 6px; font-size:8.5pt; }
+  .callout { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 10px 14px; border-radius: 6px; margin: 12px 0; font-size: 9.5pt; }
+  .ok { color: #047857; font-weight: 700; }
+  .pagebreak { page-break-before: always; }
+  ul { margin: 6px 0 6px 0; padding-left: 18px; }
+  li { margin-bottom: 3px; }
+  .small { font-size: 8.7pt; color: #6b7280; }
+  .diagram { text-align:center; margin: 14px 0; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="kicker">AI Engineering · Case Study</div>
+  <h1>AAROP</h1>
+  <div class="sub">Autonomous Agentic Reasoning &amp; Orchestration Platform — a production-grade, multi-agent system built on agentic-loop engineering principles.</div>
+  <div class="meta">
+    <b>Devayan Mandal</b> &nbsp;·&nbsp; AI / ML Engineer &nbsp;·&nbsp;
+    <span class="mono">github.com/devtechedge</span><br>
+    Reference implementation · Offline-runnable · 92% tested core
+  </div>
+</div>
+
+<div class="badges">
+  <span class="badge">Python 3.10+</span>
+  <span class="badge">Multi-Agent Orchestration</span>
+  <span class="badge">Agentic Loop State Machine</span>
+  <span class="badge green">9 Tests Passing</span>
+  <span class="badge green">92% Core Coverage</span>
+  <span class="badge">Zero API Keys to Run</span>
+</div>
+
+<h2>The Problem</h2>
+<p>Most "AI agent" demos hide their control flow inside a single sprawling prompt. They look impressive in a recorded clip but collapse the moment a tool fails, a model hallucinates, or cost runs away — because there is no explicit control loop, no verification, and no recovery path. <b>AAROP demonstrates how an agent system is actually engineered at a senior / chief-architect level:</b> the agentic loop is a first-class, inspectable state machine with bounded autonomy, self-verification, and full trace replay.</p>
+
+<h2>The Solution at a Glance</h2>
+<div class="grid">
+  <div class="card"><div class="num">6</div><div class="lbl">Loop phases (explicit FSM)</div></div>
+  <div class="card"><div class="num">5</div><div class="lbl">Pluggable subsystems</div></div>
+  <div class="card"><div class="num">92%</div><div class="lbl">Core test coverage</div></div>
+  <div class="card"><div class="num">0</div><div class="lbl">API keys to run demo</div></div>
+</div>
+<p>AAROP ingests an open-ended objective and drives it through a closed feedback loop — <span class="pill">Perceive</span> <span class="pill">Plan</span> <span class="pill">Act</span> <span class="pill">Observe</span> <span class="pill">Reflect</span> <span class="pill">Adapt</span> — orchestrating specialized tool-using agents, verifying its own output before committing, and emitting a structured, replayable trace for every run. It runs <b>100% offline</b> via a deterministic mock model provider, while every backend (model, tools, memory) is pluggable for real deployment.</p>
+
+<h2>The Agentic Loop — the heart of the system</h2>
+<div class="diagram">
+<svg width="510" height="210" viewBox="0 0 510 210" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#4f46e5"/>
+    </marker>
+  </defs>
+  <!-- nodes -->
+  <g font-family="Arial" font-size="11" font-weight="700" text-anchor="middle">
+    <rect x="10"  y="80" width="78" height="40" rx="9" fill="#eef2ff" stroke="#4f46e5"/>
+    <text x="49"  y="104" fill="#3730a3">PERCEIVE</text>
+    <rect x="118" y="80" width="64" height="40" rx="9" fill="#eef2ff" stroke="#4f46e5"/>
+    <text x="150" y="104" fill="#3730a3">PLAN</text>
+    <rect x="212" y="80" width="60" height="40" rx="9" fill="#eef2ff" stroke="#4f46e5"/>
+    <text x="242" y="104" fill="#3730a3">ACT</text>
+    <rect x="302" y="80" width="80" height="40" rx="9" fill="#eef2ff" stroke="#4f46e5"/>
+    <text x="342" y="104" fill="#3730a3">OBSERVE</text>
+    <rect x="412" y="80" width="78" height="40" rx="9" fill="#eef2ff" stroke="#4f46e5"/>
+    <text x="451" y="104" fill="#3730a3">REFLECT</text>
+    <rect x="302" y="160" width="80" height="38" rx="9" fill="#fff7ed" stroke="#f59e0b"/>
+    <text x="342" y="183" fill="#b45309">ADAPT</text>
+    <rect x="412" y="12" width="78" height="34" rx="9" fill="#ecfdf5" stroke="#10b981"/>
+    <text x="451" y="34" fill="#047857">DONE</text>
+  </g>
+  <!-- arrows -->
+  <g stroke="#4f46e5" stroke-width="2" fill="none" marker-end="url(#arr)">
+    <line x1="88"  y1="100" x2="116" y2="100"/>
+    <line x1="182" y1="100" x2="210" y2="100"/>
+    <line x1="272" y1="100" x2="300" y2="100"/>
+    <line x1="382" y1="100" x2="410" y2="100"/>
+    <line x1="451" y1="80"  x2="451" y2="48"/>
+  </g>
+  <!-- reflect -> adapt (reject) -->
+  <g stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#arr)">
+    <path d="M451,120 L451,179 L384,179"/>
+    <path d="M302,179 L150,179 L150,122"/>
+  </g>
+  <text x="465" y="68" font-family="Arial" font-size="8" fill="#047857">accept</text>
+  <text x="396" y="150" font-family="Arial" font-size="8" fill="#b45309">reject → replan</text>
+</svg>
+</div>
+<p class="small">Every phase transition emits a structured trace event (<code>phase_transition</code>, <code>tool_call</code>, <code>loop_complete</code>), so any run is reconstructable and replayable deterministically. If a budget is exhausted, the loop escalates to a human instead of looping forever.</p>
+
+<div class="pagebreak"></div>
+<h2>System Architecture</h2>
+<div class="diagram">
+<svg width="500" height="250" viewBox="0 0 500 250" xmlns="http://www.w3.org/2000/svg" font-family="Arial" font-size="10">
+  <rect x="120" y="8"  width="260" height="34" rx="7" fill="#0f1733"/>
+  <text x="250" y="30" fill="#fff" text-anchor="middle" font-weight="700">API Gateway · auth · budget · schema validation</text>
+
+  <rect x="80" y="62" width="150" height="40" rx="7" fill="#312e81"/>
+  <text x="155" y="86" fill="#fff" text-anchor="middle" font-weight="700">Orchestrator (Loop)</text>
+  <rect x="270" y="62" width="150" height="40" rx="7" fill="#4f46e5"/>
+  <text x="345" y="86" fill="#fff" text-anchor="middle" font-weight="700">Workflow Engine</text>
+
+  <g>
+    <rect x="20"  y="128" width="105" height="44" rx="7" fill="#eef2ff" stroke="#4f46e5"/>
+    <text x="72"  y="148" text-anchor="middle" fill="#3730a3" font-weight="700">Worker</text>
+    <text x="72"  y="162" text-anchor="middle" fill="#3730a3" font-weight="700">Agents</text>
+    <rect x="135" y="128" width="105" height="44" rx="7" fill="#eef2ff" stroke="#4f46e5"/>
+    <text x="187" y="148" text-anchor="middle" fill="#3730a3" font-weight="700">Tool</text>
+    <text x="187" y="162" text-anchor="middle" fill="#3730a3" font-weight="700">Registry</text>
+    <rect x="250" y="128" width="105" height="44" rx="7" fill="#eef2ff" stroke="#4f46e5"/>
+    <text x="302" y="148" text-anchor="middle" fill="#3730a3" font-weight="700">Memory</text>
+    <text x="302" y="162" text-anchor="middle" fill="#3730a3" font-weight="700">Service</text>
+    <rect x="365" y="128" width="105" height="44" rx="7" fill="#eef2ff" stroke="#4f46e5"/>
+    <text x="417" y="148" text-anchor="middle" fill="#3730a3" font-weight="700">Model</text>
+    <text x="417" y="162" text-anchor="middle" fill="#3730a3" font-weight="700">Router</text>
+  </g>
+
+  <rect x="100" y="200" width="300" height="36" rx="7" fill="#0f766e"/>
+  <text x="250" y="223" fill="#fff" text-anchor="middle" font-weight="700">Observability · Eval Harness · FinOps</text>
+
+  <g stroke="#94a3b8" stroke-width="1.5">
+    <line x1="250" y1="42" x2="155" y2="62"/>
+    <line x1="250" y1="42" x2="345" y2="62"/>
+    <line x1="155" y1="102" x2="72" y2="128"/>
+    <line x1="155" y1="102" x2="187" y2="128"/>
+    <line x1="155" y1="102" x2="302" y2="128"/>
+    <line x1="155" y1="102" x2="417" y2="128"/>
+    <line x1="250" y1="172" x2="250" y2="200"/>
+  </g>
+</svg>
+</div>
+
+<table>
+  <tr><th>Module</th><th>Responsibility</th><th>Production counterpart</th></tr>
+  <tr><td class="mono">core/loop.py</td><td>Agentic loop FSM, Budget guardrails, checkpointing</td><td>Temporal durable workflow</td></tr>
+  <tr><td class="mono">agents/agents.py</td><td>Planner · Actor · Verifier/Critic</td><td>LLM-backed agents (vLLM / OpenAI)</td></tr>
+  <tr><td class="mono">tools/registry.py</td><td>Schema-validated tools, scopes, retries, circuit breaker, audit log</td><td>Sandboxed (seccomp / gVisor)</td></tr>
+  <tr><td class="mono">memory/store.py</td><td>Working / episodic / semantic memory + RAG recall</td><td>pgvector / Qdrant + reranker</td></tr>
+  <tr><td class="mono">routing/model_router.py</td><td>Cost-aware model selection</td><td>Cloud + self-hosted routing</td></tr>
+  <tr><td class="mono">observability/tracing.py</td><td>Structured spans/events + replay buffer</td><td>OpenTelemetry + Langfuse</td></tr>
+</table>
+
+<h2>Engineering Rigor Demonstrated</h2>
+<div class="grid">
+  <div class="card">
+    <h3>Bounded Autonomy</h3>
+    <span class="small">Every run respects step / cost / time budgets and escalates to a human instead of looping forever.</span>
+  </div>
+  <div class="card">
+    <h3>Self-Verification</h3>
+    <span class="small">A critic agent scores each result against acceptance criteria before any commit to memory.</span>
+  </div>
+  <div class="card">
+    <h3>Resilience</h3>
+    <span class="small">Tool retries, circuit breaker, and anomaly detection in the observe phase.</span>
+  </div>
+</div>
+<div class="grid">
+  <div class="card">
+    <h3>Security Posture</h3>
+    <span class="small">Permission-scoped tools, input validation, sandboxed evaluator, full audit log.</span>
+  </div>
+  <div class="card">
+    <h3>Observability</h3>
+    <span class="small">Full structured trace per run; deterministic replay of any execution.</span>
+  </div>
+  <div class="card">
+    <h3>Testability</h3>
+    <span class="small">All dependencies injected/mockable; 92% coverage on core orchestration.</span>
+  </div>
+</div>
+
+<h2>Verified Results</h2>
+<div class="callout">
+  Running <code>python examples/run_demo.py --objective "calculate 21*2 + 8"</code> drives the objective through the full loop and returns the correct result with high confidence:
+  <br><br>
+  <span class="mono ok">Phase trace: plan → act → observe → reflect → done</span><br>
+  <span class="mono">result: "50"  ·  confidence: 0.9  ·  trace events: 18</span>
+  <br><br>
+  Test suite: <span class="ok">9 passed</span> · coverage <span class="ok">91.6%</span> (gate: ≥85%) · CI across Python 3.10–3.12.
+</div>
+
+<h2>Key Architecture Decisions (ADRs)</h2>
+<ul>
+  <li><b>ADR-001</b> — The agentic loop is an <i>explicit state machine</i>, not a hidden prompt chain → enables observability, replay, and crash recovery.</li>
+  <li><b>ADR-002</b> — <i>Bounded autonomy</i> via Budget guardrails → predictable cost/latency and a safe failure mode (human escalation).</li>
+  <li><b>ADR-003</b> — A <i>Verifier/Critic gate</i> before commit → measurable error reduction over single-pass output.</li>
+  <li><b>ADR-004</b> — <i>Pluggable, schema-validated tools</i> with a circuit breaker → resilient, auditable, hot-swappable.</li>
+  <li><b>ADR-005</b> — <i>Offline-first, dependency-free core</i> → instantly runnable by reviewers; hermetic CI.</li>
+</ul>
+
+<h2>Tech Stack &amp; Production Path</h2>
+<p>Reference core: <b>Python</b> (async-ready, zero runtime deps). Production reference stack documented in the repo: <b>Temporal</b> (durable workflows), <b>FastAPI</b> + Celery/Arq workers, <b>gRPC</b> agent-to-agent protocol, <b>pgvector/Qdrant</b> + cross-encoder reranker for RAG, <b>vLLM/Ollama</b> for self-hosted models, <b>OpenTelemetry + Langfuse</b> for tracing, and <b>Docker + Kubernetes + Helm + Terraform</b> with KEDA autoscaling.</p>
+
+<p class="small" style="margin-top:24px; border-top:1px solid #e6e8f0; padding-top:10px;">
+  Devayan Mandal · AI / ML Engineer · <span class="mono">github.com/devtechedge/aarop</span> · Full source, architecture doc, ADRs, and runnable demo available in the repository. © 2026.
+</p>
+
+</body>
+</html>
