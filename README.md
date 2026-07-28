@@ -23,15 +23,13 @@ Watch an objective flow through the full agentic loop in real time — no instal
 
 ## Screenshots
 
-| Live loop | Multi-agent |
-|-----------|-------------|
+| Live agentic loop | Multi-agent orchestration |
+|-------------------|---------------------------|
 | ![Agentic loop](docs/screenshots/01-agentic-loop.png) | ![Multi-agent](docs/screenshots/02-multi-agent.png) |
 
-| Architecture | Resilience |
-|--------------|------------|
-| ![Architecture](docs/screenshots/03-architecture.png) | ![Resilience](docs/screenshots/04-resilience.png) |
-
-*Capture these four views from [aarop.vercel.app](https://aarop.vercel.app/) (dark mode preferred), save under `docs/screenshots/` with the names above, then push via GitHub Desktop.*
+| System architecture + engineering rigor |
+|-----------------------------------------|
+| ![Architecture](docs/screenshots/03-architecture.png) |
 
 ---
 
