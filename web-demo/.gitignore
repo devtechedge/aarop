@@ -3,4 +3,14 @@ node_modules/
 out/
 .DS_Store
 *.tsbuildinfo
-next-env.d.ts
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Playwright
+playwright-report/
+test-results/
+blob-report/
+playwright/.cache/
