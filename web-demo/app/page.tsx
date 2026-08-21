@@ -11,11 +11,11 @@ const LOOP_PHASES: Phase[] = ["perceive", "plan", "act", "observe", "reflect", "
 const AGENTS: AgentRole[] = ["orchestrator", "researcher", "coder", "analyst", "verifier", "memory"];
 
 const SCENARIOS = [
-  { label: "🧮 Compute", obj: "calculate (15 + 5) * 3", opts: {} },
-  { label: "📚 Research + synthesize (multi-agent)", obj: "research the agentic loop and rag and explain", opts: {} },
-  { label: "🏗️ Design task (multi-agent)", obj: "design a system using temporal and vllm and pgvector", opts: {} },
-  { label: "💥 Failure → retry → escalate", obj: "calculate 42 / 6", opts: { injectFailure: true } },
-  { label: "⛔ Budget exhaustion → escalate", obj: "research rag and temporal and vllm and pgvector and react", opts: { budget: { maxSteps: 2, maxCostUsd: 0.5, maxSeconds: 30 } as Budget } },
+  { id: "compute", label: "🧮 Compute", obj: "calculate (15 + 5) * 3", opts: {} },
+  { id: "research", label: "📚 Research + synthesize (multi-agent)", obj: "research the agentic loop and rag and explain", opts: {} },
+  { id: "design", label: "🏗️ Design task (multi-agent)", obj: "design a system using temporal and vllm and pgvector", opts: {} },
+  { id: "failure", label: "💥 Failure → retry → escalate", obj: "calculate 42 / 6", opts: { injectFailure: true } },
+  { id: "budget", label: "⛔ Budget exhaustion → escalate", obj: "research rag and temporal and vllm and pgvector and react", opts: { budget: { maxSteps: 2, maxCostUsd: 0.5, maxSeconds: 30 } as Budget } },
 ];
 
 export default function Page() {
@@ -89,7 +89,7 @@ export default function Page() {
     <div className="wrap" id="top">
       <header className="hero">
         <span className="kicker">Live Demo · Agentic Loop Engineering</span>
-        <h1 className="title">AAROP</h1>
+        <h1 className="title" data-testid="hero-title">AAROP</h1>
         <p className="subtitle">
           An autonomous <b>multi-agent</b> reasoning system. Watch objectives flow through the full agentic loop —
           <b> Perceive → Plan → Act → Observe → Reflect → Adapt</b> — with delegated worker agents, self-verification,
@@ -108,13 +108,15 @@ export default function Page() {
       <section className="section">
         <h2 className="sh">1 · Live Agentic Loop</h2>
         <div className="controls">
-          <input value={objective} onChange={(e) => setObjective(e.target.value)} placeholder="Enter an objective…"
+          <input
+            data-testid="objective-input"
+            value={objective} onChange={(e) => setObjective(e.target.value)} placeholder="Enter an objective…"
             onKeyDown={(e) => e.key === "Enter" && run(objective)} disabled={running} />
-          <button className="btn" onClick={() => run(objective)} disabled={running}>{running ? "Running…" : "Run Agent ▶"}</button>
+          <button className="btn" data-testid="run-agent" onClick={() => run(objective)} disabled={running}>{running ? "Running…" : "Run Agent ▶"}</button>
         </div>
         <div className="examples">
           {SCENARIOS.map((s) => (
-            <span key={s.label} className="chip" onClick={() => { setObjective(s.obj); run(s.obj, s.opts); }}>{s.label}</span>
+            <span key={s.id} className="chip" data-testid={`scenario-${s.id}`} onClick={() => { setObjective(s.obj); run(s.obj, s.opts); }}>{s.label}</span>
           ))}
         </div>
 
@@ -139,7 +141,7 @@ export default function Page() {
         <div className="grid">
           <div className="panel">
             <div className="ph-row"><h3>Execution Trace (replayable)</h3>{snap && <button className="mini" onClick={exportTrace}>⬇ Export JSON</button>}</div>
-            <div className="trace" ref={traceRef}>
+            <div className="trace" ref={traceRef} data-testid="execution-trace">
               {(snap?.events ?? []).map((e, i) => (
                 <div className="row" key={i}>
                   <span className="ts">{e.ts.toFixed(2)}s</span>
@@ -151,7 +153,7 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="panel">
+          <div className="panel" data-testid="loop-state">
             <h3>Loop State</h3>
             <div className="metrics">
               <div className="metric"><div className="v">{snap?.steps ?? 0}</div><div className="l">Steps</div></div>
@@ -162,7 +164,7 @@ export default function Page() {
               Current phase: <b style={{ color: meta.color }}>{meta.label}</b> — {meta.desc}
             </div>
             {terminal && (
-              <div className="result">
+              <div className="result" data-testid="loop-result">
                 <span className="badge" style={{ background: phase === "done" ? "rgba(16,185,129,0.15)" : "rgba(245,158,11,0.15)", color: phase === "done" ? "var(--green)" : "var(--amber)" }}>
                   {phase === "done" ? "✓ VERIFIED & COMMITTED" : "⚠ ESCALATED TO HUMAN"}
                 </span>
@@ -185,7 +187,7 @@ export default function Page() {
       <section className="section">
         <h2 className="sh">2 · Multi-Agent Orchestration</h2>
         <p className="sp">The Orchestrator decomposes the objective and delegates to specialized worker agents. Agents light up as they engage during a run.</p>
-        <div className="agents">
+        <div className="agents" data-testid="agents-grid">
           {AGENTS.map((a) => {
             const m = AGENT_META[a];
             const on = activeAgents.has(a);
@@ -200,7 +202,7 @@ export default function Page() {
       </section>
 
       {/* ===== SECTION 3: ARCHITECTURE ===== */}
-      <section className="section">
+      <section className="section" data-testid="architecture">
         <h2 className="sh">3 · System Architecture</h2>
         <p className="sp">Production reference stack — every demo component maps to a real backend.</p>
         <div className="panel arch">
@@ -243,7 +245,7 @@ export default function Page() {
             ["Self-Verification", "A critic agent scores every result against acceptance criteria before commit."],
             ["Multi-Agent", "Orchestrator delegates to Researcher / Coder / Analyst / Verifier / Memory agents."],
             ["Observability", "Structured, replayable trace per run — exportable as JSON."],
-            ["Tested Core", "9 tests, 92% coverage on the Python core; CI runs Python 3.10–3.12 + the Next.js build."],
+            ["Tested Core", "24 tests, 99% coverage on the Python core; CI runs Python 3.10–3.12 plus web unit, typecheck, and Playwright smokes."],
           ].map(([t, d]) => (
             <div key={t} className="card"><h4>{t}</h4><p>{d}</p></div>
           ))}
@@ -254,7 +256,7 @@ export default function Page() {
         <div><a href="https://github.com/devtechedge/aarop" target="_blank" rel="noreferrer">Source &amp; Architecture →</a></div>
         <p className="disclaimer">
           This demo runs the full agentic-loop & multi-agent logic <b>entirely in your browser</b> with a deterministic mock provider — instant, free, always online.
-          The production reference stack (Temporal, vLLM, pgvector, OpenTelemetry, Kubernetes) and the 92%-tested Python core are in the repository. © 2026 Devayan Mandal.
+          The production reference stack (Temporal, vLLM, pgvector, OpenTelemetry, Kubernetes) and the 99%-tested Python core are in the repository. © 2026 Devayan Mandal.
         </p>
       </footer>
     </div>

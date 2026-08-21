@@ -28,12 +28,13 @@ export default function ThemeToggle() {
 
   // avoid hydration mismatch flicker
   if (!mounted) {
-    return <button className="theme-toggle" aria-label="Toggle theme" suppressHydrationWarning />;
+    return <button className="theme-toggle" data-testid="theme-toggle" aria-label="Toggle theme" suppressHydrationWarning />;
   }
 
   return (
     <button
       className="theme-toggle"
+      data-testid="theme-toggle"
       onClick={toggle}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
       title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
