@@ -87,7 +87,7 @@ export async function realComplete(
 }
 
 // ---------- tools (validated, sandboxed) ----------
-function safeCalc(expr: string): number {
+export function safeCalc(expr: string): number {
   if (!/^[0-9+\-*/(). ]+$/.test(expr)) throw new Error("unsafe expression");
   // eslint-disable-next-line no-new-func
   return Function(`"use strict"; return (${expr});`)() as number;
@@ -126,7 +126,7 @@ function callTool(task: Task, forceFail = false): ToolResult {
 }
 
 // ---------- planner: builds multi-step, multi-agent plans ----------
-function plan(objective: string): { tasks: Task[]; cost: number } {
+export function plan(objective: string): { tasks: Task[]; cost: number } {
   const { cost } = mockComplete(`plan: ${objective}`);
   const obj = objective.toLowerCase();
 
@@ -155,7 +155,7 @@ function plan(objective: string): { tasks: Task[]; cost: number } {
 }
 
 // ---------- verifier / critic ----------
-function verify(completed: LoopSnapshot["completed"]) {
+export function verify(completed: LoopSnapshot["completed"]) {
   if (completed.length === 0)
     return { accepted: false, confidence: 0, reason: "no work produced", answer: null as string | null };
   const last = completed[completed.length - 1].result;
@@ -306,6 +306,7 @@ export function* runAgenticLoop(
     agent: "orchestrator",
     detail: `phase=${s.phase} steps=${s.steps} cost=$${s.costUsd.toFixed(4)} confidence=${s.confidence}`,
   });
+  yield { ...s };
   return { ...s };
 }
 
