@@ -4,8 +4,8 @@
 
 <p align="left">
   <img alt="python" src="https://img.shields.io/badge/python-3.10%2B-blue">
-  <img alt="tests" src="https://img.shields.io/badge/tests-9%20passing-brightgreen">
-  <img alt="coverage" src="https://img.shields.io/badge/coverage-92%25-brightgreen">
+  <img alt="tests" src="https://img.shields.io/badge/tests-24%20passing-brightgreen">
+  <img alt="coverage" src="https://img.shields.io/badge/coverage-99%25-brightgreen">
   <img alt="license" src="https://img.shields.io/badge/license-MIT-black">
 </p>
 
@@ -20,13 +20,13 @@ Most "AI agent" demos hide their control flow inside one giant prompt and break 
 ## 🎬 Quickstart (30 seconds, no API keys)
 
 ```bash
-git clone https://github.com/devtechedge/aarop && cd aarop
+git clone https://github.com/devtechedge/aarop && cd aarop/core
 pip install -e ".[dev]"
 
 # Run the full agentic loop end-to-end
 python examples/run_demo.py --objective "calculate 21*2 + 8" --verbose
 
-# Run the test suite (9 tests, 92% coverage on core logic)
+# Run the test suite (24 tests, 99% coverage on core logic)
 pytest --cov=aarop
 ```
 
@@ -93,7 +93,7 @@ See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for C4-style diagrams, the pr
 - **Resilience** — tool retries, circuit breaker, anomaly detection in the observe phase.
 - **Security posture** — permission-scoped tools, input validation, sandboxed-charset evaluator, audit logging.
 - **Observability** — full structured trace per run; deterministic replay.
-- **Testability** — 92% coverage on core orchestration; all dependencies injected/mockable.
+- **Testability** — 99% coverage on core orchestration; all dependencies injected/mockable.
 
 ## 🗺️ From demo to production
 
@@ -105,7 +105,7 @@ This repo is the **reference core**. The [architecture doc](docs/ARCHITECTURE.md
 aarop/
 ├── src/aarop/{core,agents,tools,memory,routing,observability}/
 ├── examples/run_demo.py        # end-to-end runnable demo
-├── tests/test_loop.py          # 9 unit tests, 92% core coverage
+├── tests/test_loop.py          # 24 unit tests, 99% core coverage
 ├── docs/{ARCHITECTURE.md,PROJECT_SPEC.md}
 └── pyproject.toml
 ```

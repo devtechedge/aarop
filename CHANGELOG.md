@@ -3,6 +3,21 @@
 All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.4.0] — 2026-08-21
+
+### Added
+- Root [`SECURITY.md`](SECURITY.md) — honest threat model for the client-side demo and offline Python core.
+- Web-demo **unit tests** (`node:test`) covering calculator allow-list, planner, verifier, loop completion, circuit-breaker escalation, and step budgets.
+- **Playwright** Chromium smokes: hero render, compute → verified result, budget → escalate, theme toggle.
+- **Dependabot** weekly for `web-demo` npm, `core` pip, and GitHub Actions (patch/minor grouped, majors ignored).
+- `npm run typecheck` (`tsc --noEmit`) and a Node **22** CI job: install → unit → typecheck → e2e.
+
+### Changed
+- Python suite expanded **9 → 24** tests; core coverage **92% → 99%**.
+- Live demo CI is no longer build-only.
+- Next.js patched **14.2.5 → 14.2.35** (stay on 14; do not force 15/16).
+- Trace now yields the `loop_complete` event so the UI matches the generator.
+
 ## [0.3.0] — 2026-06-29
 
 ### Changed
@@ -36,4 +51,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - **Live web demo** (`web-demo/`) — Next.js 14 app animating the full loop client-side; deployed at [aarop.vercel.app](https://aarop.vercel.app/).
 - **Docs** — architecture (C4 diagrams + 5 ADRs), full project specification, and a 4-page PDF case study.
 
+[0.4.0]: https://github.com/devtechedge/aarop/releases/tag/v0.4.0
 [0.1.0]: https://github.com/devtechedge/aarop/releases/tag/v0.1.0

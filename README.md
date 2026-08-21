@@ -7,15 +7,15 @@
   <a href="https://github.com/devtechedge/aarop/actions"><img alt="ci" src="https://github.com/devtechedge/aarop/actions/workflows/ci.yml/badge.svg"></a>
   <img alt="python" src="https://img.shields.io/badge/python-3.10%2B-blue">
   <img alt="next" src="https://img.shields.io/badge/Next.js-14-black">
-  <img alt="tests" src="https://img.shields.io/badge/tests-9%20passing-brightgreen">
-  <img alt="coverage" src="https://img.shields.io/badge/coverage-92%25-brightgreen">
+  <img alt="tests" src="https://img.shields.io/badge/tests-24%20passing-brightgreen">
+  <img alt="coverage" src="https://img.shields.io/badge/coverage-99%25-brightgreen">
   <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-MIT-black"></a>
 </p>
 
 ### 🌐 [**▶ Try the Live Demo →**](https://aarop.vercel.app/)
 Watch an objective flow through the full agentic loop in real time — no install, no API keys, no sign-up.
 
-> **Live demo status:** 100% client-side TypeScript port with a deterministic mock provider — always online on Vercel. The Python `core/` engine runs offline with the same loop semantics (9 tests, 92% coverage).
+> **Live demo status:** 100% client-side TypeScript port with a deterministic mock provider — always online on Vercel. The Python `core/` engine runs offline with the same loop semantics (24 tests, 99% coverage).
 
 **Built by [Devayan Mandal](https://github.com/devtechedge)** — AI / ML Engineer.
 
@@ -37,7 +37,7 @@ Watch an objective flow through the full agentic loop in real time — no instal
 
 | Path | What it is |
 |---|---|
-| **[`core/`](core/)** | The Python reference engine — the agentic loop, agents, tool registry, memory, model router, observability. **9 tests, 92% coverage. Runs offline, no API keys.** |
+| **[`core/`](core/)** | The Python reference engine — the agentic loop, agents, tool registry, memory, model router, observability. **24 tests, 99% coverage. Runs offline, no API keys.** |
 | **[`web-demo/`](web-demo/)** | A **Next.js live demo** ([aarop.vercel.app](https://aarop.vercel.app/)) that animates the full agentic loop in the browser. |
 | **[`docs/AAROP_Case_Study.pdf`](docs/AAROP_Case_Study.pdf)** | A polished 4-page case study (problem → architecture → results → ADRs). |
 | **[`core/docs/ARCHITECTURE.md`](core/docs/ARCHITECTURE.md)** | C4 diagrams, production reference stack, and 5 ADRs. |
@@ -66,7 +66,7 @@ Every phase transition emits a structured trace event, so any run is fully recon
 
 ```
 aarop/
-├── core/                       # Python reference engine (runs offline, 92% tested)
+├── core/                       # Python reference engine (runs offline, 99% tested)
 │   ├── src/aarop/
 │   │   ├── core/loop.py        # agentic loop state machine + Budget guardrails
 │   │   ├── agents/agents.py    # Planner · Actor · Verifier (critic)
@@ -79,11 +79,13 @@ aarop/
 │   └── docs/                   # ARCHITECTURE.md, PROJECT_SPEC.md
 ├── web-demo/                   # Next.js 14 live demo (Vercel)
 │   ├── app/
-│   ├── lib/aarop.ts
+│   ├── lib/aarop.ts            # TS port + node:test helpers
+│   ├── e2e/                    # Playwright Chromium smokes
 │   └── public/favicon.svg
 ├── docs/
 │   ├── AAROP_Case_Study.pdf
 │   └── screenshots/
+├── SECURITY.md
 ├── LICENSE
 └── README.md
 ```
@@ -95,13 +97,15 @@ aarop/
 cd core
 pip install -e ".[dev]"
 python examples/run_demo.py --objective "calculate 21*2 + 8" --verbose
-pytest --cov=aarop          # 9 passed · 92% coverage
+pytest --cov=aarop          # 24 passed · 99% coverage
 ```
 
 **Live demo (Next.js):**
 ```bash
 cd web-demo
-npm install
+npm ci
+npm test                    # node:test helpers (calculator, planner, loop)
+npm run typecheck
 npm run dev                 # http://localhost:3000
 ```
 
@@ -113,13 +117,15 @@ npm run dev                 # http://localhost:3000
 - **Resilient tooling** — schema-validated, permission-scoped, retries + circuit breaker + audit log
 - **Cost-aware model routing** — cloud + self-hosted, pluggable
 - **Observability** — structured trace per run (OpenTelemetry-shaped)
-- **92% test coverage** on core orchestration; CI across Python 3.10–3.12
+- **99% test coverage** on core orchestration; CI across Python 3.10–3.12, plus web unit tests, `tsc --noEmit`, and Playwright smokes
 
 See **[`core/docs/ARCHITECTURE.md`](core/docs/ARCHITECTURE.md)** for C4 diagrams, the production reference stack (Temporal, FastAPI, pgvector, vLLM, Kubernetes, OpenTelemetry), and **5 Architecture Decision Records**.
 
 ## Live demo
 
 The [`web-demo/`](web-demo/) ports the exact loop logic to TypeScript and runs **100% client-side** with a deterministic mock provider — instant, free, and always online. Deployed on Vercel: **[aarop.vercel.app](https://aarop.vercel.app/)**. See [`web-demo/README.md`](web-demo/README.md) for deploy steps.
+
+Threat model for both surfaces: **[`SECURITY.md`](SECURITY.md)**.
 
 ## Roadmap
 

@@ -15,8 +15,10 @@ python examples/run_demo.py --verbose
 **Web demo (Next.js):**
 ```bash
 cd web-demo
-npm install
-npm run dev
+npm ci
+npm test                    # node:test helpers
+npm run typecheck
+npm run test:e2e            # Playwright Chromium smokes
 npm run build               # verify a production build
 ```
 
@@ -30,7 +32,7 @@ npm run build               # verify a production build
 ## Pull requests
 
 1. Fork and create a feature branch.
-2. Run `pytest` (Python) and `npm run build` (web) before opening the PR.
+2. Run `pytest` (Python) and `npm test && npm run typecheck && npm run test:e2e` (web) before opening the PR.
 3. Describe the change and link any related issue.
 
 ## Reporting issues

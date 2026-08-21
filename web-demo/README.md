@@ -20,8 +20,11 @@ The loop logic in [`lib/aarop.ts`](lib/aarop.ts) is a faithful TypeScript port o
 ## 🧑‍💻 Run locally
 
 ```bash
-npm install
-npm run dev      # http://localhost:3000
+npm ci
+npm test                 # node:test helpers
+npm run typecheck
+npm run dev              # http://localhost:3000
+npm run test:e2e         # Playwright Chromium smokes (starts Next itself)
 ```
 
 ## ▲ Deploy to Vercel (free)
