@@ -27,18 +27,45 @@ jobs:
       - name: Run end-to-end demo
         run: python examples/run_demo.py --objective "calculate 21*2 + 8"
 
-  web-build:
-    name: Web demo (Next.js)
+  web-demo:
+    name: unit · typecheck · e2e
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     defaults:
       run:
         working-directory: web-demo
+    env:
+      NEXT_TELEMETRY_DISABLED: 1
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
-      - name: Install
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web-demo/package-lock.json
+
+      - name: Install dependencies
         run: npm ci
-      - name: Build
-        run: npm run build
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: End-to-end tests
+        run: npm run test:e2e
+        env:
+          CI: true
+
+      - name: Upload Playwright report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: web-demo/playwright-report/
+          retention-days: 7
