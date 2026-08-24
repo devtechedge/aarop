@@ -84,6 +84,6 @@ Orchestrator → Client: state.checkpoint() + trace
 **Consequences:** resilient and auditable; tools are hot-swappable. **Accepted.**
 
 ### ADR-005 — Offline-first, dependency-free core
-**Context:** Reviewers/recruiters must run it instantly; CI must be hermetic.
+**Context:** Reviewers must run it instantly; CI must be hermetic.
 **Decision:** Core has zero runtime deps and a deterministic mock model.
 **Consequences:** trivial to run & test; real backends added at the edges. **Accepted.**

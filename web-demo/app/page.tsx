@@ -38,7 +38,7 @@ export default function Page() {
     if (useRealLLM && apiKey.trim() && finalSnap?.result) {
       try {
         setLlmOut("calling LLM…");
-        const { text } = await realComplete(`In one sentence, explain this agent result to a recruiter: "${finalSnap.result}"`, apiKey.trim());
+        const { text } = await realComplete(`In one sentence, explain this agent result to a visitor: "${finalSnap.result}"`, apiKey.trim());
         setLlmOut(text);
       } catch (e) { setLlmOut("⚠️ " + (e as Error).message); }
     }
