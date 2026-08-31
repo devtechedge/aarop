@@ -245,3 +245,45 @@ h1.title {
 /* ---------- footer ---------- */
 .footer { text-align: center; color: var(--text-muted); font-size: var(--fs-sm); margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--border-soft); line-height: 1.7; }
 .disclaimer { font-size: var(--fs-xs); color: var(--text-dim); max-width: 680px; margin: 10px auto 0; line-height: 1.55; }
+
+/* Overlay hover-reveal scrollbars: invisible until the pointer is over that pane. */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+  *:not(html):not(body):hover,
+  *:not(html):not(body):focus,
+  *:not(html):not(body):focus-within {
+    scrollbar-color: color-mix(in oklab, currentColor 32%, transparent) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background: transparent;
+  }
+  *::-webkit-scrollbar-track,
+  *::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+  *::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  *:not(html):not(body):hover::-webkit-scrollbar-thumb,
+  *:not(html):not(body):focus::-webkit-scrollbar-thumb,
+  *:not(html):not(body):focus-within::-webkit-scrollbar-thumb {
+    background-color: color-mix(in oklab, currentColor 32%, transparent);
+  }
+  *:not(html):not(body):hover::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(in oklab, currentColor 52%, transparent);
+  }
+}
+
