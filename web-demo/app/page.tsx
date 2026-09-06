@@ -103,8 +103,6 @@ export default function Page() {
           <a className="btn ghost" href="https://github.com/devtechedge/aarop" target="_blank" rel="noreferrer">View source →</a>
         </div>
       </header>
-
-      {/* ===== SECTION 1: LIVE LOOP ===== */}
       <section className="section">
         <h2 className="sh">1 · Live Agentic Loop</h2>
         <div className="controls">
@@ -182,8 +180,6 @@ export default function Page() {
           </div>
         </div>
       </section>
-
-      {/* ===== SECTION 2: MULTI-AGENT FAN-OUT ===== */}
       <section className="section">
         <h2 className="sh">2 · Multi-Agent Orchestration</h2>
         <p className="sp">The Orchestrator decomposes the objective and delegates to specialized worker agents. Agents light up as they engage during a run.</p>
@@ -200,8 +196,6 @@ export default function Page() {
           })}
         </div>
       </section>
-
-      {/* ===== SECTION 3: ARCHITECTURE ===== */}
       <section className="section" data-testid="architecture">
         <h2 className="sh">3 · System Architecture</h2>
         <p className="sp">Production reference stack — every demo component maps to a real backend.</p>
@@ -234,8 +228,6 @@ export default function Page() {
           Full C4 diagrams, sequence diagrams & 5 ADRs in <a href="https://github.com/devtechedge/aarop/blob/main/core/docs/ARCHITECTURE.md" target="_blank" rel="noreferrer">ARCHITECTURE.md</a>.
         </p>
       </section>
-
-      {/* ===== SECTION 4: WHY IT'S ENGINEERED RIGHT ===== */}
       <section className="section">
         <h2 className="sh">4 · Engineering Rigor</h2>
         <div className="cards">
