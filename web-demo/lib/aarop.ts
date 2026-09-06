@@ -66,7 +66,7 @@ function mockComplete(prompt: string): { text: string; cost: number } {
   return { text: `[mock-llm:${h.toString(16).slice(0, 8)}] ${prompt.slice(0, 48)}`, cost: +cost.toFixed(6) };
 }
 
-// optional real LLM (bring-your-own-key); used only for a single generation step
+// optional real LLM (bring-your-own-key); browser→OpenAI only — never logged to a first-party API / never localStorage
 export async function realComplete(
   prompt: string, apiKey: string
 ): Promise<{ text: string; cost: number }> {

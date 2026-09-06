@@ -1,6 +1,6 @@
 # Security Assessment — AAROP
 
-**Date:** 2026-08-21  
+**Date:** 2026-09-06  
 **Scope:** Auth, XSS, injection, secrets, CORS, supply chain, Python tool sandbox  
 **Context:** Public deploy is a **100% client-side Next.js demo** ([aarop.vercel.app](https://aarop.vercel.app/)). The Python `core/` engine is an **offline reference implementation** (no network, no API keys).
 
@@ -19,8 +19,9 @@
 | CORS | **N/A** | No first-party API routes |
 | Supply chain | **Accepted (Next 14)** | Stay on Next **14.x**. Do not `--force` onto 15/16 |
 | Build config | **OK** | No `ignoreBuildErrors`. `tsc --noEmit` in CI |
+| HTTP headers | **Added** | CSP, frame deny, nosniff, referrer, permissions (2026-09-06) |
 
-**Overall (public Vercel demo):** Low residual risk — browser-only simulation, deterministic mock provider, no backend secrets, no auth boundary to break.
+**Overall (public Vercel demo):** Low residual risk — browser-only simulation, deterministic mock provider, no backend secrets, no auth boundary to break. Not a claim of being unhackable; there is simply little server surface. Headers reduce casual XSS framing / MIME sniff risks.
 
 **Overall (if someone pointed the Python engine at untrusted tools or a public network):** Medium — the demo `eval` calculator is charset-gated, not a real sandbox (no seccomp / containers).
 
@@ -83,7 +84,21 @@ The live demo can send **one** narration request to `https://api.openai.com/v1/c
 
 ---
 
-## 5. HTTP surface
+## 5. HTTP hardening (2026-09-06)
+
+Headers in `web-demo/next.config.mjs`:
+
+- `X-Content-Type-Options: nosniff`
+- `X-Frame-Options: DENY`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- `Permissions-Policy: camera=(), microphone=(), geolocation=()`
+- CSP: `default-src 'self'`; script/style `'unsafe-inline'` (Next); `connect-src 'self' https://api.openai.com` (BYOK only); `frame-ancestors 'none'`; `object-src 'none'`
+
+No first-party API routes to rate-limit. OpenAI key stays in React state (not localStorage) and is sent only to `api.openai.com`.
+
+---
+
+## 6. HTTP surface
 
 | Path | Auth | Notes |
 |------|------|--------|
@@ -96,7 +111,7 @@ No `app/api/` routes. No Socket.io. No hello-world placeholder APIs.
 
 ---
 
-## 6. Secrets & config hygiene
+## 7. Secrets & config hygiene
 
 - Root and `web-demo/` `.gitignore` exclude `.env`, `.env.*`.
 - No `.env.example` is required — the demo has no server secrets.
@@ -104,7 +119,7 @@ No `app/api/` routes. No Socket.io. No hello-world placeholder APIs.
 
 ---
 
-## 7. Dependency / supply chain
+## 8. Dependency / supply chain
 
 **This pass**
 - Web demo stays on **Next 14** (patched 14.2.x). Advisories that only clear on Next 15/16 are **accepted residual risk**.
@@ -121,7 +136,7 @@ Do **not** run `npm audit fix --force` onto Next 15/16.
 
 ---
 
-## 8. CORS & network
+## 9. CORS & network
 
 - Live demo is same-origin static/client. No CORS policy to get wrong.
 - Python core makes **no** outbound calls (mock model provider).
@@ -129,7 +144,7 @@ Do **not** run `npm audit fix --force` onto Next 15/16.
 
 ---
 
-## 9. Residual risk & acceptance
+## 10. Residual risk & acceptance
 
 **Accepted for portfolio demo**
 - No authentication on the public site.
@@ -144,7 +159,7 @@ Do **not** run `npm audit fix --force` onto Next 15/16.
 
 ---
 
-## 10. How to re-test
+## 11. How to re-test
 
 ```bash
 # Python core

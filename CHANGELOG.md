@@ -3,6 +3,12 @@
 All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.4.1] — 2026-09-06
+
+### Added
+- Web-demo security headers (CSP, X-Frame-Options DENY, nosniff, referrer, permissions) in `web-demo/next.config.mjs`.
+- SECURITY.md updated for header controls; BYOK OpenAI key remains browser-only (no first-party logging).
+
 ## [0.4.0] — 2026-08-21
 
 ### Added
