@@ -1,5 +1,5 @@
 """
-Model Router — selects a model backend by task type, cost, and latency.
+Model Router - selects a model backend by task type, cost, and latency.
 
 Supports cloud providers and self-hosted models behind one interface. The demo
 ships a deterministic MockProvider so the whole system runs offline, with no API

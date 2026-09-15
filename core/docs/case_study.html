@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>AAROP — Case Study · Devayan Mandal</title>
+<title>AAROP - Case Study · Devayan Mandal</title>
 <style>
   @page {
     size: A4;
     margin: 18mm 16mm 20mm 16mm;
     @bottom-center {
-      content: "AAROP — Autonomous Agentic Reasoning & Orchestration Platform  ·  Devayan Mandal";
+      content: "AAROP - Autonomous Agentic Reasoning & Orchestration Platform  ·  Devayan Mandal";
       font-size: 8pt; color: #8a93a6;
     }
     @bottom-right { content: "Page " counter(page) " / " counter(pages); font-size: 8pt; color: #8a93a6; }
@@ -70,7 +70,7 @@
 <div class="cover">
   <div class="kicker">AI Engineering · Case Study</div>
   <h1>AAROP</h1>
-  <div class="sub">Autonomous Agentic Reasoning &amp; Orchestration Platform — a production-grade, multi-agent system built on agentic-loop engineering principles.</div>
+  <div class="sub">Autonomous Agentic Reasoning &amp; Orchestration Platform - a production-grade, multi-agent system built on agentic-loop engineering principles.</div>
   <div class="meta">
     <b>Devayan Mandal</b> &nbsp;·&nbsp; AI / ML Engineer &nbsp;·&nbsp;
     <span class="mono">github.com/devtechedge</span><br>
@@ -88,7 +88,7 @@
 </div>
 
 <h2>The Problem</h2>
-<p>Most "AI agent" demos hide their control flow inside a single sprawling prompt. They look impressive in a recorded clip but collapse the moment a tool fails, a model hallucinates, or cost runs away — because there is no explicit control loop, no verification, and no recovery path. <b>AAROP demonstrates how an agent system is actually engineered at a senior / chief-architect level:</b> the agentic loop is a first-class, inspectable state machine with bounded autonomy, self-verification, and full trace replay.</p>
+<p>Most "AI agent" demos hide their control flow inside a single sprawling prompt. They look impressive in a recorded clip but collapse the moment a tool fails, a model hallucinates, or cost runs away - because there is no explicit control loop, no verification, and no recovery path. <b>AAROP demonstrates how an agent system is actually engineered at a senior / chief-architect level:</b> the agentic loop is a first-class, inspectable state machine with bounded autonomy, self-verification, and full trace replay.</p>
 
 <h2>The Solution at a Glance</h2>
 <div class="grid">
@@ -97,9 +97,9 @@
   <div class="card"><div class="num">92%</div><div class="lbl">Core test coverage</div></div>
   <div class="card"><div class="num">0</div><div class="lbl">API keys to run demo</div></div>
 </div>
-<p>AAROP ingests an open-ended objective and drives it through a closed feedback loop — <span class="pill">Perceive</span> <span class="pill">Plan</span> <span class="pill">Act</span> <span class="pill">Observe</span> <span class="pill">Reflect</span> <span class="pill">Adapt</span> — orchestrating specialized tool-using agents, verifying its own output before committing, and emitting a structured, replayable trace for every run. It runs <b>100% offline</b> via a deterministic mock model provider, while every backend (model, tools, memory) is pluggable for real deployment.</p>
+<p>AAROP ingests an open-ended objective and drives it through a closed feedback loop - <span class="pill">Perceive</span> <span class="pill">Plan</span> <span class="pill">Act</span> <span class="pill">Observe</span> <span class="pill">Reflect</span> <span class="pill">Adapt</span> - orchestrating specialized tool-using agents, verifying its own output before committing, and emitting a structured, replayable trace for every run. It runs <b>100% offline</b> via a deterministic mock model provider, while every backend (model, tools, memory) is pluggable for real deployment.</p>
 
-<h2>The Agentic Loop — the heart of the system</h2>
+<h2>The Agentic Loop - the heart of the system</h2>
 <div class="diagram">
 <svg width="510" height="210" viewBox="0 0 510 210" xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -237,11 +237,11 @@
 
 <h2>Key Architecture Decisions (ADRs)</h2>
 <ul>
-  <li><b>ADR-001</b> — The agentic loop is an <i>explicit state machine</i>, not a hidden prompt chain → enables observability, replay, and crash recovery.</li>
-  <li><b>ADR-002</b> — <i>Bounded autonomy</i> via Budget guardrails → predictable cost/latency and a safe failure mode (human escalation).</li>
-  <li><b>ADR-003</b> — A <i>Verifier/Critic gate</i> before commit → measurable error reduction over single-pass output.</li>
-  <li><b>ADR-004</b> — <i>Pluggable, schema-validated tools</i> with a circuit breaker → resilient, auditable, hot-swappable.</li>
-  <li><b>ADR-005</b> — <i>Offline-first, dependency-free core</i> → instantly runnable by reviewers; hermetic CI.</li>
+  <li><b>ADR-001</b> - The agentic loop is an <i>explicit state machine</i>, not a hidden prompt chain → enables observability, replay, and crash recovery.</li>
+  <li><b>ADR-002</b> - <i>Bounded autonomy</i> via Budget guardrails → predictable cost/latency and a safe failure mode (human escalation).</li>
+  <li><b>ADR-003</b> - A <i>Verifier/Critic gate</i> before commit → measurable error reduction over single-pass output.</li>
+  <li><b>ADR-004</b> - <i>Pluggable, schema-validated tools</i> with a circuit breaker → resilient, auditable, hot-swappable.</li>
+  <li><b>ADR-005</b> - <i>Offline-first, dependency-free core</i> → instantly runnable by reviewers; hermetic CI.</li>
 </ul>
 
 <h2>Tech Stack &amp; Production Path</h2>

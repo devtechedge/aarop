@@ -26,7 +26,7 @@ npm run build               # verify a production build
 
 - **Keep the agentic loop explicit.** New behavior should be modeled as inspectable phases/events, not hidden inside prompt strings.
 - **Tests required.** Core orchestration changes must keep coverage ≥ 85%.
-- **Inject dependencies.** Models, tools, and memory backends are pluggable — keep them mockable.
+- **Inject dependencies.** Models, tools, and memory backends are pluggable - keep them mockable.
 - **Document decisions.** Significant architectural changes get an ADR in `core/docs/ARCHITECTURE.md`.
 
 ## Pull requests

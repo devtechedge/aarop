@@ -1,4 +1,4 @@
-# Security Assessment — AAROP
+# Security Assessment - AAROP
 
 **Date:** 2026-09-06  
 **Scope:** Auth, XSS, injection, secrets, CORS, supply chain, Python tool sandbox  
@@ -21,9 +21,9 @@
 | Build config | **OK** | No `ignoreBuildErrors`. `tsc --noEmit` in CI |
 | HTTP headers | **Added** | CSP, frame deny, nosniff, referrer, permissions (2026-09-06) |
 
-**Overall (public Vercel demo):** Low residual risk — browser-only simulation, deterministic mock provider, no backend secrets, no auth boundary to break. Not a claim of being unhackable; there is simply little server surface. Headers reduce casual XSS framing / MIME sniff risks.
+**Overall (public Vercel demo):** Low residual risk - browser-only simulation, deterministic mock provider, no backend secrets, no auth boundary to break. Not a claim of being unhackable; there is simply little server surface. Headers reduce casual XSS framing / MIME sniff risks.
 
-**Overall (if someone pointed the Python engine at untrusted tools or a public network):** Medium — the demo `eval` calculator is charset-gated, not a real sandbox (no seccomp / containers).
+**Overall (if someone pointed the Python engine at untrusted tools or a public network):** Medium - the demo `eval` calculator is charset-gated, not a real sandbox (no seccomp / containers).
 
 ---
 
@@ -66,7 +66,7 @@ This is **not** a production sandbox. A real deployment should run tools in secc
 
 ### TypeScript live demo
 
-`web-demo/lib/aarop.ts` uses `/^[0-9+\-*/(). ]+$/` and `Function('"use strict"; return (…)')()`. Same allow-list. Client-side only — a crafted expression cannot reach a server.
+`web-demo/lib/aarop.ts` uses `/^[0-9+\-*/(). ]+$/` and `Function('"use strict"; return (…)')()`. Same allow-list. Client-side only - a crafted expression cannot reach a server.
 
 Unknown tools return `{ error }`. Required args are validated before dispatch.
 
@@ -114,7 +114,7 @@ No `app/api/` routes. No Socket.io. No hello-world placeholder APIs.
 ## 7. Secrets & config hygiene
 
 - Root and `web-demo/` `.gitignore` exclude `.env`, `.env.*`.
-- No `.env.example` is required — the demo has no server secrets.
+- No `.env.example` is required - the demo has no server secrets.
 - CI uses no repository secrets.
 
 ---

@@ -1,5 +1,5 @@
 """
-Tool Registry — pluggable, schema-validated, permission-scoped tools.
+Tool Registry - pluggable, schema-validated, permission-scoped tools.
 
 Every tool advertises a JSON-schema-style I/O contract. Calls are validated,
 audited, retried, and protected by a simple circuit breaker. Real deployments

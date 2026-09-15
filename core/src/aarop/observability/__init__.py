@@ -1,1 +1,1 @@
-"""AAROP observability — structured tracing, spans, and replay buffer."""
+"""AAROP observability - structured tracing, spans, and replay buffer."""

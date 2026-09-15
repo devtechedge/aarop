@@ -1,6 +1,6 @@
-# 🧠 AAROP — Autonomous Agentic Reasoning & Orchestration Platform
+# 🧠 AAROP - Autonomous Agentic Reasoning & Orchestration Platform
 
-> A reference implementation of a **multi-agent AI system built on agentic-loop engineering principles**: `Perceive → Plan → Act → Observe → Reflect → Adapt`. The loop is an **explicit, inspectable state machine** — not a hidden prompt chain — with bounded autonomy, self-verification, durable checkpointing, and full trace replay.
+> A reference implementation of a **multi-agent AI system built on agentic-loop engineering principles**: `Perceive → Plan → Act → Observe → Reflect → Adapt`. The loop is an **explicit, inspectable state machine** - not a hidden prompt chain - with bounded autonomy, self-verification, durable checkpointing, and full trace replay.
 
 <p align="left">
   <a href="https://aarop.vercel.app/"><img alt="live demo" src="https://img.shields.io/badge/live%20demo-online-brightgreen"></a>
@@ -13,11 +13,11 @@
 </p>
 
 ### 🌐 [**▶ Try the Live Demo →**](https://aarop.vercel.app/)
-Watch an objective flow through the full agentic loop in real time — no install, no API keys, no sign-up.
+Watch an objective flow through the full agentic loop in real time - no install, no API keys, no sign-up.
 
-> **Live demo status:** 100% client-side TypeScript port with a deterministic mock provider — always online on Vercel. The Python `core/` engine runs offline with the same loop semantics (24 tests, 99% coverage).
+> **Live demo status:** 100% client-side TypeScript port with a deterministic mock provider - always online on Vercel. The Python `core/` engine runs offline with the same loop semantics (24 tests, 99% coverage).
 
-**Built by [Devayan Mandal](https://github.com/devtechedge)** — AI / ML Engineer.
+**Built by [Devayan Mandal](https://github.com/devtechedge)** - AI / ML Engineer.
 
 ---
 
@@ -37,7 +37,7 @@ Watch an objective flow through the full agentic loop in real time — no instal
 
 | Path | What it is |
 |---|---|
-| **[`core/`](core/)** | The Python reference engine — the agentic loop, agents, tool registry, memory, model router, observability. **24 tests, 99% coverage. Runs offline, no API keys.** |
+| **[`core/`](core/)** | The Python reference engine - the agentic loop, agents, tool registry, memory, model router, observability. **24 tests, 99% coverage. Runs offline, no API keys.** |
 | **[`web-demo/`](web-demo/)** | A **Next.js live demo** ([aarop.vercel.app](https://aarop.vercel.app/)) that animates the full agentic loop in the browser. |
 | **[`docs/AAROP_Case_Study.pdf`](docs/AAROP_Case_Study.pdf)** | A polished 4-page case study (problem → architecture → results → ADRs). |
 | **[`core/docs/ARCHITECTURE.md`](core/docs/ARCHITECTURE.md)** | C4 diagrams, production reference stack, and 5 ADRs. |
@@ -111,19 +111,19 @@ npm run dev                 # http://localhost:3000
 
 ## Architecture & engineering rigor
 
-- **Explicit loop state machine** — observable, replayable, crash-recoverable
-- **Bounded autonomy** — step / cost / time budgets with human escalation
-- **Self-verification** — a critic agent gates every result before commit
-- **Resilient tooling** — schema-validated, permission-scoped, retries + circuit breaker + audit log
-- **Cost-aware model routing** — cloud + self-hosted, pluggable
-- **Observability** — structured trace per run (OpenTelemetry-shaped)
+- **Explicit loop state machine** - observable, replayable, crash-recoverable
+- **Bounded autonomy** - step / cost / time budgets with human escalation
+- **Self-verification** - a critic agent gates every result before commit
+- **Resilient tooling** - schema-validated, permission-scoped, retries + circuit breaker + audit log
+- **Cost-aware model routing** - cloud + self-hosted, pluggable
+- **Observability** - structured trace per run (OpenTelemetry-shaped)
 - **99% test coverage** on core orchestration; CI across Python 3.10–3.12, plus web unit tests, `tsc --noEmit`, and Playwright smokes
 
 See **[`core/docs/ARCHITECTURE.md`](core/docs/ARCHITECTURE.md)** for C4 diagrams, the production reference stack (Temporal, FastAPI, pgvector, vLLM, Kubernetes, OpenTelemetry), and **5 Architecture Decision Records**.
 
 ## Live demo
 
-The [`web-demo/`](web-demo/) ports the exact loop logic to TypeScript and runs **100% client-side** with a deterministic mock provider — instant, free, and always online. Deployed on Vercel: **[aarop.vercel.app](https://aarop.vercel.app/)**. See [`web-demo/README.md`](web-demo/README.md) for deploy steps.
+The [`web-demo/`](web-demo/) ports the exact loop logic to TypeScript and runs **100% client-side** with a deterministic mock provider - instant, free, and always online. Deployed on Vercel: **[aarop.vercel.app](https://aarop.vercel.app/)**. See [`web-demo/README.md`](web-demo/README.md) for deploy steps.
 
 Threat model for both surfaces: **[`SECURITY.md`](SECURITY.md)**.
 
@@ -141,4 +141,4 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md). Issues and PRs welcome.
 
 ## License
 
-MIT © 2026 Devayan Mandal — see [`LICENSE`](LICENSE).
+MIT © 2026 Devayan Mandal - see [`LICENSE`](LICENSE).

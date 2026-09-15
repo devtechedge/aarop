@@ -1,5 +1,5 @@
 """
-Agents — Planner, Actor (tool-using worker), and Verifier/Critic.
+Agents - Planner, Actor (tool-using worker), and Verifier/Critic.
 
 These implement the pluggable interfaces the AgenticLoop depends on. They are
 deliberately small and deterministic so the architecture is legible and the

@@ -92,7 +92,7 @@ export default function Page() {
         <h1 className="title" data-testid="hero-title">AAROP</h1>
         <p className="subtitle">
           An autonomous <b>multi-agent</b> reasoning system. Watch objectives flow through the full agentic loop —
-          <b> Perceive → Plan → Act → Observe → Reflect → Adapt</b> — with delegated worker agents, self-verification,
+          <b> Perceive → Plan → Act → Observe → Reflect → Adapt</b> - with delegated worker agents, self-verification,
           resilient recovery, bounded autonomy, and a replayable trace.
         </p>
         <p className="byline">
@@ -159,14 +159,14 @@ export default function Page() {
               <div className="metric"><div className="v">{((snap?.confidence ?? 0) * 100).toFixed(0)}%</div><div className="l">Confidence</div></div>
             </div>
             <div style={{ marginTop: 14, fontSize: 13, color: "var(--muted)" }}>
-              Current phase: <b style={{ color: meta.color }}>{meta.label}</b> — {meta.desc}
+              Current phase: <b style={{ color: meta.color }}>{meta.label}</b> - {meta.desc}
             </div>
             {terminal && (
               <div className="result" data-testid="loop-result">
                 <span className="badge" style={{ background: phase === "done" ? "rgba(16,185,129,0.15)" : "rgba(245,158,11,0.15)", color: phase === "done" ? "var(--green)" : "var(--amber)" }}>
                   {phase === "done" ? "✓ VERIFIED & COMMITTED" : "⚠ ESCALATED TO HUMAN"}
                 </span>
-                <div className="answer">{snap?.result ?? "Recovery exhausted — handed off for human review (bounded autonomy)."}</div>
+                <div className="answer">{snap?.result ?? "Recovery exhausted - handed off for human review (bounded autonomy)."}</div>
               </div>
             )}
 
@@ -175,7 +175,7 @@ export default function Page() {
               <label className="llm-toggle"><input type="checkbox" checked={useRealLLM} onChange={(e) => setUseRealLLM(e.target.checked)} /> Use a real LLM (bring your own OpenAI key)</label>
               {useRealLLM && <input className="key" type="password" placeholder="sk-… (kept in your browser only)" value={apiKey} onChange={(e) => setApiKey(e.target.value)} />}
               {llmOut && <div className="llm-out"><b>LLM narration:</b> {llmOut}</div>}
-              {useRealLLM && <div className="note">Your key never leaves the browser — it calls OpenAI directly from your machine for one narration step only.</div>}
+              {useRealLLM && <div className="note">Your key never leaves the browser - it calls OpenAI directly from your machine for one narration step only.</div>}
             </div>
           </div>
         </div>
@@ -198,7 +198,7 @@ export default function Page() {
       </section>
       <section className="section" data-testid="architecture">
         <h2 className="sh">3 · System Architecture</h2>
-        <p className="sp">Production reference stack — every demo component maps to a real backend.</p>
+        <p className="sp">Production reference stack - every demo component maps to a real backend.</p>
         <div className="panel arch">
           <svg viewBox="0 0 760 360" width="100%" style={{ maxWidth: 760 }} xmlns="http://www.w3.org/2000/svg" fontFamily="ui-sans-serif, system-ui" fontSize="13">
             <rect x="180" y="10" width="400" height="40" rx="9" fill="#1e1b4b" stroke="#6366f1"/>
@@ -236,7 +236,7 @@ export default function Page() {
             ["Resilient Recovery", "Tool retries, circuit breaker, anomaly detection in Observe. Try the failure scenario above."],
             ["Self-Verification", "A critic agent scores every result against acceptance criteria before commit."],
             ["Multi-Agent", "Orchestrator delegates to Researcher / Coder / Analyst / Verifier / Memory agents."],
-            ["Observability", "Structured, replayable trace per run — exportable as JSON."],
+            ["Observability", "Structured, replayable trace per run - exportable as JSON."],
             ["Tested Core", "24 tests, 99% coverage on the Python core; CI runs Python 3.10–3.12 plus web unit, typecheck, and Playwright smokes."],
           ].map(([t, d]) => (
             <div key={t} className="card"><h4>{t}</h4><p>{d}</p></div>
@@ -247,7 +247,7 @@ export default function Page() {
       <footer className="footer">
         <div><a href="https://github.com/devtechedge/aarop" target="_blank" rel="noreferrer">Source &amp; Architecture →</a></div>
         <p className="disclaimer">
-          This demo runs the full agentic-loop & multi-agent logic <b>entirely in your browser</b> with a deterministic mock provider — instant, free, always online.
+          This demo runs the full agentic-loop & multi-agent logic <b>entirely in your browser</b> with a deterministic mock provider - instant, free, always online.
           The production reference stack (Temporal, vLLM, pgvector, OpenTelemetry, Kubernetes) and the 99%-tested Python core are in the repository. © 2026 Devayan Mandal.
         </p>
       </footer>

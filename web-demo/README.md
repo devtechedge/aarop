@@ -1,21 +1,21 @@
-# 🚀 AAROP — Live Agentic Loop Demo
+# 🚀 AAROP - Live Agentic Loop Demo
 
-An interactive, browser-based walk-through of the **AAROP** autonomous multi-agent reasoning system. Enter an objective and watch it flow through the full agentic loop — **Perceive → Plan → Act → Observe → Reflect → Adapt** — with live tool calls, self-verification, budget guardrails, and a replayable execution trace.
+An interactive, browser-based walk-through of the **AAROP** autonomous multi-agent reasoning system. Enter an objective and watch it flow through the full agentic loop - **Perceive → Plan → Act → Observe → Reflect → Adapt** - with live tool calls, self-verification, budget guardrails, and a replayable execution trace.
 
 > 🔗 **Core engine & architecture:** [github.com/devtechedge/aarop](https://github.com/devtechedge/aarop)
 
 ## ✨ What this demonstrates
 
 - The complete **agentic loop as an explicit state machine** (not a hidden prompt chain)
-- **Multi-agent orchestration** — the Orchestrator delegates to Researcher / Coder / Analyst / Verifier / Memory agents, which light up live
-- **Multi-step plans** — research-style objectives chain several tools and agents, then synthesize
-- **Resilient recovery** — a failure scenario triggers retries → circuit breaker → escalation
-- **Bounded autonomy** — a budget scenario shows the loop escalate instead of looping forever
+- **Multi-agent orchestration** - the Orchestrator delegates to Researcher / Coder / Analyst / Verifier / Memory agents, which light up live
+- **Multi-step plans** - research-style objectives chain several tools and agents, then synthesize
+- **Resilient recovery** - a failure scenario triggers retries → circuit breaker → escalation
+- **Bounded autonomy** - a budget scenario shows the loop escalate instead of looping forever
 - Live, **exportable execution trace** (download the run as JSON)
 - An **interactive architecture diagram** mapping each demo component to its production backend
 - An optional **"bring your own OpenAI key"** toggle for real LLM narration (key stays in your browser)
 
-The loop logic in [`lib/aarop.ts`](lib/aarop.ts) is a faithful TypeScript port of the Python reference core. It runs **100% client-side** with a deterministic mock model provider — so the demo is instant, free, and never times out.
+The loop logic in [`lib/aarop.ts`](lib/aarop.ts) is a faithful TypeScript port of the Python reference core. It runs **100% client-side** with a deterministic mock model provider - so the demo is instant, free, and never times out.
 
 ## 🧑‍💻 Run locally
 
@@ -32,7 +32,7 @@ npm run test:e2e         # Playwright Chromium smokes (starts Next itself)
 1. Push this folder to a GitHub repo.
 2. Go to [vercel.com/new](https://vercel.com/new), import the repo.
 3. Framework preset: **Next.js** (auto-detected). No env vars needed.
-4. Click **Deploy**. Done — you get a live `https://<project>.vercel.app` URL.
+4. Click **Deploy**. Done - you get a live `https://<project>.vercel.app` URL.
 
 Because the demo is fully static/client-side, it deploys on Vercel's free Hobby tier with **no serverless timeout risk and no API costs**.
 

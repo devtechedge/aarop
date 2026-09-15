@@ -1,5 +1,5 @@
 """
-Memory Service — working, episodic, semantic, and procedural memory.
+Memory Service - working, episodic, semantic, and procedural memory.
 
 Production backs this with pgvector/Qdrant + Postgres + Redis. The demo uses an
 in-memory store with a transparent bag-of-words similarity so RAG-style recall

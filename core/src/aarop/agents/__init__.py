@@ -1,1 +1,1 @@
-"""AAROP agents — Planner, Actor, and Verifier/Critic implementations."""
+"""AAROP agents - Planner, Actor, and Verifier/Critic implementations."""

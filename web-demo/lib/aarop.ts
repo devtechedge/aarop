@@ -1,5 +1,5 @@
 /**
- * AAROP — Agentic Loop Engine (TypeScript port, enhanced demo build).
+ * AAROP - Agentic Loop Engine (TypeScript port, enhanced demo build).
  *
  * Faithful port of the Python reference core (github.com/devtechedge/aarop):
  * an explicit Perceive -> Plan -> Act -> Observe -> Reflect -> Adapt state
@@ -66,7 +66,7 @@ function mockComplete(prompt: string): { text: string; cost: number } {
   return { text: `[mock-llm:${h.toString(16).slice(0, 8)}] ${prompt.slice(0, 48)}`, cost: +cost.toFixed(6) };
 }
 
-// optional real LLM (bring-your-own-key); browser→OpenAI only — never logged to a first-party API / never localStorage
+// optional real LLM (bring-your-own-key); browser→OpenAI only - never logged to a first-party API / never localStorage
 export async function realComplete(
   prompt: string, apiKey: string
 ): Promise<{ text: string; cost: number }> {
@@ -94,7 +94,7 @@ export function safeCalc(expr: string): number {
 }
 
 const KB: Record<string, string> = {
-  "agentic loop": "Perceive, Plan, Act, Observe, Reflect, Adapt — an explicit control loop.",
+  "agentic loop": "Perceive, Plan, Act, Observe, Reflect, Adapt - an explicit control loop.",
   react: "Reasoning + Acting interleaved with tool use.",
   rag: "Retrieval-Augmented Generation grounds answers in retrieved context.",
   temporal: "A durable workflow engine for crash-safe, replayable execution.",
@@ -271,8 +271,8 @@ export function* runAgenticLoop(
         const last = s.completed[s.completed.length - 1]?.result;
         const lastEvent = s.events[s.events.length - 1];
         const anomaly = lastEvent?.event === "circuit_breaker" || !last || "error" in (last as object);
-        emit("observe", { agent: "orchestrator", detail: anomaly ? "anomaly detected — entering recovery" : "result captured cleanly" });
-        if (anomaly && retryCount >= 3) { transition("escalated", "circuit open — human-in-the-loop"); break; }
+        emit("observe", { agent: "orchestrator", detail: anomaly ? "anomaly detected - entering recovery" : "result captured cleanly" });
+        if (anomaly && retryCount >= 3) { transition("escalated", "circuit open - human-in-the-loop"); break; }
         transition(anomaly ? "adapt" : "reflect");
         break;
       }
@@ -317,9 +317,9 @@ export const PHASE_META: Record<Phase, { label: string; color: string; desc: str
   observe:  { label: "Observe",  color: "#f59e0b", desc: "Capture results + detect anomalies" },
   reflect:  { label: "Reflect",  color: "#10b981", desc: "Critic verifies against acceptance criteria" },
   adapt:    { label: "Adapt",    color: "#ef4444", desc: "Replan / retry / escalate to human" },
-  done:     { label: "Done",     color: "#059669", desc: "Accepted — committed to memory" },
+  done:     { label: "Done",     color: "#059669", desc: "Accepted - committed to memory" },
   failed:   { label: "Failed",   color: "#dc2626", desc: "Unrecoverable failure" },
-  escalated:{ label: "Escalated",color: "#d97706", desc: "Budget/breaker — human-in-the-loop" },
+  escalated:{ label: "Escalated",color: "#d97706", desc: "Budget/breaker - human-in-the-loop" },
 };
 
 export const AGENT_META: Record<AgentRole, { label: string; color: string; desc: string }> = {
@@ -327,6 +327,6 @@ export const AGENT_META: Record<AgentRole, { label: string; color: string; desc:
   researcher:   { label: "Researcher",   color: "#3b82f6", desc: "Web / KB / RAG retrieval" },
   coder:        { label: "Coder",        color: "#ec4899", desc: "Code & computation execution" },
   analyst:      { label: "Analyst",      color: "#f59e0b", desc: "Data synthesis & analysis" },
-  verifier:     { label: "Verifier",     color: "#10b981", desc: "Critic — gates every result" },
+  verifier:     { label: "Verifier",     color: "#10b981", desc: "Critic - gates every result" },
   memory:       { label: "Memory",       color: "#14b8a6", desc: "Episodic / semantic recall & commit" },
 };

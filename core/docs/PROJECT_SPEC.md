@@ -1,27 +1,27 @@
-# AI Engineer Project Prompt — Autonomous Agentic Reasoning & Orchestration Platform (AAROP)
+# AI Engineer Project Prompt - Autonomous Agentic Reasoning & Orchestration Platform (AAROP)
 
-> **Role Directive:** You are to act as a **Chief AI Architect with 20+ years of distributed systems, ML platform, and applied AI engineering experience**. You will design and build a complete, end-to-end, production-grade, deeply complex AI engineering system grounded in **agentic loop engineering principles** (perceive → plan → act → observe → reflect → adapt). This is a *prompt specification only* — produce the full architecture, code, infrastructure, and operational design as instructed, but treat this document as the master blueprint that governs the build.
+> **Role Directive:** You are to act as a **Chief AI Architect with 20+ years of distributed systems, ML platform, and applied AI engineering experience**. You will design and build a complete, end-to-end, production-grade, deeply complex AI engineering system grounded in **agentic loop engineering principles** (perceive → plan → act → observe → reflect → adapt). This is a *prompt specification only* - produce the full architecture, code, infrastructure, and operational design as instructed, but treat this document as the master blueprint that governs the build.
 
 ---
 
 ## 1. Mission & North-Star Objective
 
-Design and implement **AAROP — Autonomous Agentic Reasoning & Orchestration Platform**: a self-improving, multi-agent system that ingests open-ended objectives, decomposes them into executable plans, orchestrates a fleet of specialized tool-using agents through closed feedback loops, verifies its own outputs, and continuously learns from execution traces. The platform must be horizontally scalable, observable, secure, cost-governed, and capable of running both cloud-hosted and self-hosted models.
+Design and implement **AAROP - Autonomous Agentic Reasoning & Orchestration Platform**: a self-improving, multi-agent system that ingests open-ended objectives, decomposes them into executable plans, orchestrates a fleet of specialized tool-using agents through closed feedback loops, verifies its own outputs, and continuously learns from execution traces. The platform must be horizontally scalable, observable, secure, cost-governed, and capable of running both cloud-hosted and self-hosted models.
 
 **Success is defined by:** measurable task-completion rate, factual grounding/verification scores, cost-per-successful-task, latency SLOs, autonomous error-recovery rate, and a demonstrable self-improvement curve over time.
 
 ---
 
-## 2. Core Design Philosophy — Agentic Loop Engineering
+## 2. Core Design Philosophy - Agentic Loop Engineering
 
-Every subsystem must conform to the canonical **agentic control loop**, implemented as a first-class, inspectable state machine — not buried in prompt strings:
+Every subsystem must conform to the canonical **agentic control loop**, implemented as a first-class, inspectable state machine - not buried in prompt strings:
 
-1. **Perceive** — normalize inputs, retrieve relevant context (RAG + memory), assess environment/tool state.
-2. **Plan** — generate a hierarchical task graph (HTN/tree-of-thought hybrid), estimate cost/risk, select strategy.
-3. **Act** — invoke tools/sub-agents with typed contracts, sandboxed execution, and budget enforcement.
-4. **Observe** — capture structured results, side effects, and telemetry; detect anomalies.
-5. **Reflect** — self-critique against acceptance criteria; run verifier/critic agents; score confidence.
-6. **Adapt** — replan, retry with backoff, escalate to human-in-the-loop, or commit results to memory.
+1. **Perceive** - normalize inputs, retrieve relevant context (RAG + memory), assess environment/tool state.
+2. **Plan** - generate a hierarchical task graph (HTN/tree-of-thought hybrid), estimate cost/risk, select strategy.
+3. **Act** - invoke tools/sub-agents with typed contracts, sandboxed execution, and budget enforcement.
+4. **Observe** - capture structured results, side effects, and telemetry; detect anomalies.
+5. **Reflect** - self-critique against acceptance criteria; run verifier/critic agents; score confidence.
+6. **Adapt** - replan, retry with backoff, escalate to human-in-the-loop, or commit results to memory.
 
 The loop must support **bounded autonomy** (step/cost/time budgets), **interruptibility** (pause/resume/cancel), **determinism controls** (seeded replay), and **checkpointing** (durable loop state for crash recovery).
 
@@ -118,13 +118,13 @@ The loop must support **bounded autonomy** (step/cost/time budgets), **interrupt
 ## 7. Deliverables (Produce All)
 
 1. **System design doc** with C4 diagrams, sequence diagrams of the agentic loop, and ADRs (Architecture Decision Records).
-2. **Full source code** — orchestrator, agents, tool registry, memory, model router, guardrails — clean, typed, tested.
-3. **Infrastructure-as-Code** — Terraform + Helm/K8s manifests + Dockerfiles.
-4. **Evaluation harness** — datasets, metrics, regression suite, dashboards.
-5. **Observability stack** — wired OTel traces + Grafana dashboards + trace-replay tooling.
-6. **Security & governance** — threat model, guardrail configs, budget/FinOps policies.
-7. **Runbooks & docs** — onboarding, operations, incident response, scaling playbook.
-8. **Demo scenarios** — at least 3 end-to-end tasks showing perceive→adapt loop in action.
+2. **Full source code** - orchestrator, agents, tool registry, memory, model router, guardrails - clean, typed, tested.
+3. **Infrastructure-as-Code** - Terraform + Helm/K8s manifests + Dockerfiles.
+4. **Evaluation harness** - datasets, metrics, regression suite, dashboards.
+5. **Observability stack** - wired OTel traces + Grafana dashboards + trace-replay tooling.
+6. **Security & governance** - threat model, guardrail configs, budget/FinOps policies.
+7. **Runbooks & docs** - onboarding, operations, incident response, scaling playbook.
+8. **Demo scenarios** - at least 3 end-to-end tasks showing perceive→adapt loop in action.
 
 ---
 
@@ -142,19 +142,19 @@ The loop must support **bounded autonomy** (step/cost/time budgets), **interrupt
 
 ## 9. Engineering Phases (Roadmap)
 
-1. **Phase 0 — Foundations:** repo, CI, IaC skeleton, contracts, telemetry baseline.
-2. **Phase 1 — Single-agent loop:** perceive→act→observe→reflect with one tool + memory.
-3. **Phase 2 — Multi-agent orchestration:** supervisor, A2A protocol, routing.
-4. **Phase 3 — Memory & RAG:** hybrid retrieval, episodic/semantic/procedural memory.
-5. **Phase 4 — Verification & guardrails:** critic agents, security, governance.
-6. **Phase 5 — Self-improvement:** eval harness, prompt optimization, optional fine-tuning.
-7. **Phase 6 — Hardening & scale:** load tests, chaos testing, cost tuning, GA.
+1. **Phase 0 - Foundations:** repo, CI, IaC skeleton, contracts, telemetry baseline.
+2. **Phase 1 - Single-agent loop:** perceive→act→observe→reflect with one tool + memory.
+3. **Phase 2 - Multi-agent orchestration:** supervisor, A2A protocol, routing.
+4. **Phase 3 - Memory & RAG:** hybrid retrieval, episodic/semantic/procedural memory.
+5. **Phase 4 - Verification & guardrails:** critic agents, security, governance.
+6. **Phase 5 - Self-improvement:** eval harness, prompt optimization, optional fine-tuning.
+7. **Phase 6 - Hardening & scale:** load tests, chaos testing, cost tuning, GA.
 
 ---
 
 ## 10. Constraints & Operating Rules
 
-- Treat the agentic loop as **explicit, inspectable state** — never an opaque prompt chain.
+- Treat the agentic loop as **explicit, inspectable state** - never an opaque prompt chain.
 - Enforce **bounded autonomy**: every loop respects step/cost/time budgets and human escalation gates.
 - All tool I/O is **schema-validated, sandboxed, and audited**.
 - Favor **modularity and replaceability**: models, tools, memory backends are pluggable.

@@ -1,1 +1,1 @@
-"""AAROP core — the agentic loop state machine and bounded-autonomy budgets."""
+"""AAROP core - the agentic loop state machine and bounded-autonomy budgets."""

@@ -1,6 +1,6 @@
-# AAROP — Architecture & Design Decisions
+# AAROP - Architecture & Design Decisions
 
-## 1. C4 — Context
+## 1. C4 - Context
 
 ```
 [User / API client] ──objective──► [AAROP Platform] ──results+trace──► [User]
@@ -10,7 +10,7 @@
                    [Model Providers] [Tool Sandboxes] [Memory/Vector Store]
 ```
 
-## 2. C4 — Container
+## 2. C4 - Container
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -31,7 +31,7 @@
        [Observability + Eval + FinOps]
 ```
 
-## 3. Sequence — one agentic run
+## 3. Sequence - one agentic run
 
 ```
 Client → Orchestrator: run(objective, budget)
@@ -63,27 +63,27 @@ Orchestrator → Client: state.checkpoint() + trace
 
 ## 5. Architecture Decision Records (ADRs)
 
-### ADR-001 — The agentic loop is an explicit state machine
+### ADR-001 - The agentic loop is an explicit state machine
 **Context:** Prompt-chained agents are opaque and hard to debug/recover.
 **Decision:** Model `Perceive→…→Adapt` as enumerated phases with logged transitions.
 **Consequences:** +observability, +replay, +crash recovery; −slightly more boilerplate. **Accepted.**
 
-### ADR-002 — Bounded autonomy via Budget guardrails
+### ADR-002 - Bounded autonomy via Budget guardrails
 **Context:** Agents can loop forever or blow up cost.
 **Decision:** Every run carries `max_steps/max_cost/max_seconds`; exceeding → escalate.
 **Consequences:** predictable cost & latency; safe failure mode (human escalation). **Accepted.**
 
-### ADR-003 — Verifier/Critic gate before commit
+### ADR-003 - Verifier/Critic gate before commit
 **Context:** Single-pass LLM output is unreliable.
 **Decision:** No result is returned/committed until a critic accepts it vs. acceptance criteria.
 **Consequences:** higher quality, measurable error reduction; +one model call per cycle. **Accepted.**
 
-### ADR-004 — Pluggable, schema-validated tools with a circuit breaker
+### ADR-004 - Pluggable, schema-validated tools with a circuit breaker
 **Context:** Tools are the main failure & security surface.
 **Decision:** Typed contracts + permission scopes + retries + circuit breaker + audit log.
 **Consequences:** resilient and auditable; tools are hot-swappable. **Accepted.**
 
-### ADR-005 — Offline-first, dependency-free core
+### ADR-005 - Offline-first, dependency-free core
 **Context:** Reviewers must run it instantly; CI must be hermetic.
 **Decision:** Core has zero runtime deps and a deterministic mock model.
 **Consequences:** trivial to run & test; real backends added at the edges. **Accepted.**

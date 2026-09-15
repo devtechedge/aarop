@@ -1,6 +1,6 @@
-# 🧠 AAROP — Autonomous Agentic Reasoning & Orchestration Platform
+# 🧠 AAROP - Autonomous Agentic Reasoning & Orchestration Platform
 
-> A reference implementation of a **multi-agent system built on agentic-loop engineering principles**: `Perceive → Plan → Act → Observe → Reflect → Adapt`. The loop is implemented as an **explicit, inspectable state machine** — not a hidden prompt chain — with bounded autonomy, self-verification, durable checkpointing, and full trace replay.
+> A reference implementation of a **multi-agent system built on agentic-loop engineering principles**: `Perceive → Plan → Act → Observe → Reflect → Adapt`. The loop is implemented as an **explicit, inspectable state machine** - not a hidden prompt chain - with bounded autonomy, self-verification, durable checkpointing, and full trace replay.
 
 <p align="left">
   <img alt="python" src="https://img.shields.io/badge/python-3.10%2B-blue">
@@ -15,7 +15,7 @@
 
 Most "AI agent" demos hide their control flow inside one giant prompt and break the moment a tool fails or a model hallucinates. AAROP demonstrates how a **senior/architect-level** agent system is actually engineered: the agentic loop is a first-class state machine, every tool call is schema-validated and sandboxed, every run is budgeted, verified by a critic, and fully replayable from a structured trace.
 
-**It runs 100% offline with zero API keys** (a deterministic `MockProvider` stands in for the LLM), so anyone can clone and run it in seconds — while every backend (model, tools, memory) is pluggable for real deployment.
+**It runs 100% offline with zero API keys** (a deterministic `MockProvider` stands in for the LLM), so anyone can clone and run it in seconds - while every backend (model, tools, memory) is pluggable for real deployment.
 
 ## 🎬 Quickstart (30 seconds, no API keys)
 
@@ -73,7 +73,7 @@ Every transition emits a structured trace event (`phase_transition`, `tool_call`
 | Module | Responsibility |
 |---|---|
 | `core/loop.py` | The agentic loop state machine + `Budget` (bounded autonomy) + checkpointing |
-| `agents/agents.py` | `Planner`, `Actor`, `Verifier/Critic` — the pluggable loop dependencies |
+| `agents/agents.py` | `Planner`, `Actor`, `Verifier/Critic` - the pluggable loop dependencies |
 | `tools/registry.py` | Schema-validated tool registry, permission scopes, retries, **circuit breaker**, audit log |
 | `memory/store.py` | Working / episodic / semantic memory + RAG-style recall + consolidation |
 | `routing/model_router.py` | Cost-aware model routing across cloud + self-hosted providers |
@@ -88,12 +88,12 @@ See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for C4-style diagrams, the pr
 
 ## 🛡️ Engineering rigor demonstrated
 
-- **Bounded autonomy** — every run respects step / cost / time budgets and escalates instead of looping forever.
-- **Self-verification** — a critic agent scores every result against acceptance criteria before commit.
-- **Resilience** — tool retries, circuit breaker, anomaly detection in the observe phase.
-- **Security posture** — permission-scoped tools, input validation, sandboxed-charset evaluator, audit logging.
-- **Observability** — full structured trace per run; deterministic replay.
-- **Testability** — 99% coverage on core orchestration; all dependencies injected/mockable.
+- **Bounded autonomy** - every run respects step / cost / time budgets and escalates instead of looping forever.
+- **Self-verification** - a critic agent scores every result against acceptance criteria before commit.
+- **Resilience** - tool retries, circuit breaker, anomaly detection in the observe phase.
+- **Security posture** - permission-scoped tools, input validation, sandboxed-charset evaluator, audit logging.
+- **Observability** - full structured trace per run; deterministic replay.
+- **Testability** - 99% coverage on core orchestration; all dependencies injected/mockable.
 
 ## 🗺️ From demo to production
 
@@ -112,4 +112,4 @@ aarop/
 
 ## 📜 License
 
-MIT © 2026 Devayan Mandal — see [LICENSE](LICENSE).
+MIT © 2026 Devayan Mandal - see [LICENSE](LICENSE).

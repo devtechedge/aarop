@@ -12,12 +12,12 @@ const description =
   "Live, interactive walk-through of an autonomous multi-agent reasoning loop (Perceive → Plan → Act → Observe → Reflect → Adapt). Built by Devayan Mandal.";
 
 export const metadata: Metadata = {
-  title: "AAROP — Agentic Loop Live Demo · Devayan Mandal",
+  title: "AAROP - Agentic Loop Live Demo · Devayan Mandal",
   description,
   metadataBase: new URL("https://aarop.vercel.app"),
   icons: { icon: "/favicon.svg" },
   openGraph: {
-    title: "AAROP — Agentic Loop Live Demo",
+    title: "AAROP - Agentic Loop Live Demo",
     description,
     url: "https://aarop.vercel.app",
     siteName: "AAROP",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AAROP — Agentic Loop Live Demo",
+    title: "AAROP - Agentic Loop Live Demo",
     description,
   },
 };

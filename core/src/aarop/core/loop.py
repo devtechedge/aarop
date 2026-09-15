@@ -1,11 +1,11 @@
 """
-AAROP — Core Agentic Loop Engine.
+AAROP - Core Agentic Loop Engine.
 
 Implements the canonical agentic control loop as an explicit, inspectable
 state machine: Perceive -> Plan -> Act -> Observe -> Reflect -> Adapt.
 
 The loop is the beating heart of the system. It is intentionally NOT hidden
-inside a prompt chain — every phase transition, budget check, and decision is
+inside a prompt chain - every phase transition, budget check, and decision is
 a first-class, observable event so the entire run can be replayed and audited.
 """
 from __future__ import annotations

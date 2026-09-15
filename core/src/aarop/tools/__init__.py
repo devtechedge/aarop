@@ -1,1 +1,1 @@
-"""AAROP tools — pluggable, schema-validated, permission-scoped tool registry."""
+"""AAROP tools - pluggable, schema-validated, permission-scoped tool registry."""
