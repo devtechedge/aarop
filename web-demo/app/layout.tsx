@@ -22,11 +22,13 @@ export const metadata: Metadata = {
     url: "https://aarop.vercel.app",
     siteName: "AAROP",
     type: "website",
+    images: [{ url: 'https://aarop.vercel.app/og.png', width: 1200, height: 630, alt: 'aarop' }],
   },
   twitter: {
     card: "summary_large_image",
     title: "AAROP - Agentic Loop Live Demo",
     description,
+    images: ['https://aarop.vercel.app/og.png'],
   },
 };
 
