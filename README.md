@@ -35,13 +35,32 @@ Watch an objective flow through the full agentic loop in real time - no install,
 
 ## What's in this repository
 
-| Path | What it is |
-|---|---|
-| **[`core/`](core/)** | The Python reference engine - the agentic loop, agents, tool registry, memory, model router, observability. **24 tests, 99% coverage. Runs offline, no API keys.** |
-| **[`web-demo/`](web-demo/)** | A **Next.js live demo** ([aarop.vercel.app](https://aarop.vercel.app/)) that animates the full agentic loop in the browser. |
-| **[`docs/AAROP_Case_Study.pdf`](docs/AAROP_Case_Study.pdf)** | A polished 4-page case study (problem → architecture → results → ADRs). |
-| **[`core/docs/ARCHITECTURE.md`](core/docs/ARCHITECTURE.md)** | C4 diagrams, production reference stack, and 5 ADRs. |
-| **[`core/docs/PROJECT_SPEC.md`](core/docs/PROJECT_SPEC.md)** | The full chief-architect-level system specification. |
+| Path | What it is | Role |
+|---|---|---|
+| **[`core/`](core/)** | The Python reference engine - the agentic loop, agents, tool registry, memory, model router, observability. **24 tests, 99% coverage. Runs offline, no API keys.** | **Canonical** |
+| **[`web-demo/`](web-demo/)** | A **Next.js live demo** ([aarop.vercel.app](https://aarop.vercel.app/)) that animates the full agentic loop in the browser. | Derived port |
+| **[`docs/AAROP_Case_Study.pdf`](docs/AAROP_Case_Study.pdf)** | A polished 4-page case study (problem → architecture → results → ADRs). | |
+| **[`core/docs/ARCHITECTURE.md`](core/docs/ARCHITECTURE.md)** | C4 diagrams, production reference stack, and 5 ADRs. | |
+| **[`core/docs/PROJECT_SPEC.md`](core/docs/PROJECT_SPEC.md)** | The full chief-architect-level system specification. | |
+
+## Two implementations: which one is canonical?
+
+**`core/` (Python) is the canonical engine.** It is the reference implementation, and it is where
+the tests, the coverage figure, the ADRs and the production specification live. Every change to
+loop phases, budget guardrails or tool contracts lands in Python first.
+
+**`web-demo/lib/aarop.ts` is a derived browser port.** It exists so the loop can be watched in a
+tab with no install and no API key. It reproduces the canonical phase semantics, then adds
+demo-only affordances the Python engine deliberately does not carry:
+
+- chained multi-step plans
+- multi-agent delegation metadata (which worker owns each task)
+- a failure-injection path that demonstrates retry, circuit-breaker and escalate
+- an optional bring-your-own-key hook for a single generation step
+
+Those extras are presentation, not engine features, and they are not back-ported to Python. So the
+two files are intentionally not line-for-line identical: **treat any divergence in loop semantics
+as a bug in the TypeScript file, not in the Python one.**
 
 ## The Agentic Loop
 
@@ -77,9 +96,9 @@ aarop/
 │   ├── examples/run_demo.py
 │   ├── tests/test_loop.py
 │   └── docs/                   # ARCHITECTURE.md, PROJECT_SPEC.md
-├── web-demo/                   # Next.js 14 live demo (Vercel)
+├── web-demo/                   # Next.js 14 live demo (Vercel) - derived port
 │   ├── app/
-│   ├── lib/aarop.ts            # TS port + node:test helpers
+│   ├── lib/aarop.ts            # TS port of the loop + demo-only extras + node:test helpers
 │   ├── e2e/                    # Playwright Chromium smokes
 │   └── public/favicon.svg
 ├── docs/
@@ -123,7 +142,7 @@ See **[`core/docs/ARCHITECTURE.md`](core/docs/ARCHITECTURE.md)** for C4 diagrams
 
 ## Live demo
 
-The [`web-demo/`](web-demo/) ports the exact loop logic to TypeScript and runs **100% client-side** with a deterministic mock provider - instant, free, and always online. Deployed on Vercel: **[aarop.vercel.app](https://aarop.vercel.app/)**. See [`web-demo/README.md`](web-demo/README.md) for deploy steps.
+The [`web-demo/`](web-demo/) carries the loop over to TypeScript and runs **100% client-side** with a deterministic mock provider - instant, free, and always online. It follows the canonical Python semantics and adds demo-only extras on top; see the section above for what that means. Deployed on Vercel: **[aarop.vercel.app](https://aarop.vercel.app/)**. See [`web-demo/README.md`](web-demo/README.md) for deploy steps.
 
 Threat model for both surfaces: **[`SECURITY.md`](SECURITY.md)**.
 

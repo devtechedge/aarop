@@ -25,6 +25,7 @@ npm run build               # verify a production build
 ## Guidelines
 
 - **Keep the agentic loop explicit.** New behavior should be modeled as inspectable phases/events, not hidden inside prompt strings.
+- **Python is canonical.** `core/` is the reference engine. A change to loop semantics, budgets or tool contracts lands there with tests first, and only then is mirrored into `web-demo/lib/aarop.ts`. If the two disagree, the Python side wins.
 - **Tests required.** Core orchestration changes must keep coverage ≥ 85%.
 - **Inject dependencies.** Models, tools, and memory backends are pluggable - keep them mockable.
 - **Document decisions.** Significant architectural changes get an ADR in `core/docs/ARCHITECTURE.md`.
